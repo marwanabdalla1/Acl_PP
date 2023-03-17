@@ -6,9 +6,7 @@ const morgan = require('morgan')
 const Joi = require('joi')
 
 
-const logger = require('./middleware/logger')
 const courses = require('./view/coursesView')
-const home = require('./routes/home')
 const express = require('express')
 
 
@@ -42,7 +40,7 @@ connectDB();
 
 
 //routing fucntions
-app.use('/', home)
+//app.use('/', home)
 app.use('/api/createcourse', courses)
 
 
