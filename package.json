@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "config": "^3.3.9",
+    "doge": "^19.9.9-much.party",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",
     "express": "^4.18.2",
