@@ -1,0 +1,23 @@
+guest/instructor/individual trainee / corporate trainee	select their country 
+guest/instructor/individual trainee/corporate trainee	view all the titles of the courses available including the total hours of the course and course rating
+guest/instructor/individual trainee 	view the price of each course
+guest/instructor/individual trainee /corporate trainee	filter the courses based on a subject and/or rating
+guest/instructor/individual trainee 	filter the courses based on price (price can be FREE)
+guest/instructor/individual trainee /corporate trainee	search for a course based on course title or subject or instructor
+guest/instructor/individual trainee 	choose a course from the results and view (but not open) its details including course subtitles, excercises , total hours of each subtitle, total hours of the course and price (including % discount if applicable) according to the country selected
+
+
+
+
+instructor	view all the titles of the courses given by him/her (the instructor has a list of courses, query the course database with ids of the of the courses that the instructor has)
+
+
+instructor	filter the courses given by him/her based on a subject or price (we will search for matching ids AND a specific subject or price)
+instructor	search for a course given by him/her based on course title or subject or instructor
+instructor	create a new course and fill in all its details inclding title, subtitles, price and short summary about the entire course
+administrator	add another administrator with a set username and password
+administrator	add instructors and create their usernames and passwords
+administrator	add corporate trainees and create their usernames and passwords
+
+
+

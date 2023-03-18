@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const CourseController = require('../controller/coursesController')
+const { createCourse} = require('../controller/coursesController')
 
 
 
@@ -9,7 +9,8 @@ const CourseController = require('../controller/coursesController')
 // })
 
 
-router.post('/', CourseController.createCourse);
+router.post( '/', createCourse);
+
 
 
 module.exports = router

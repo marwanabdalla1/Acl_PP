@@ -6,8 +6,19 @@ const morgan = require('morgan')
 const Joi = require('joi')
 
 
-const courses = require('./view/coursesView')
+const courses = require('./routes/coursesView')
 const express = require('express')
+
+
+// const React = require('react');
+// const { default: MyComponent } = require('./Components/reactcomp');
+
+// const ReactDOMServer = require('react-dom/server');
+
+// const html = ReactDOMServer.renderToString(<MyComponent />);
+
+// console.log(html);
+
 
 
 const {

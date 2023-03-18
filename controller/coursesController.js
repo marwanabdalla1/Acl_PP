@@ -1,6 +1,8 @@
 const Course = require('../model/courseSchema');
 
 const CourseController = {
+
+
   createCourse: async (req, res) => {
     const course = new Course({
       name: req.body.name,
@@ -20,3 +22,4 @@ const CourseController = {
 };
 
 module.exports = CourseController;
+
