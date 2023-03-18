@@ -7,6 +7,7 @@ const Joi = require('joi')
 
 
 const courses = require('./routes/coursesView')
+const exercise = require('./routes/exerciseView')
 const express = require('express')
 
 
@@ -53,6 +54,7 @@ connectDB();
 //routing fucntions
 //app.use('/', home)
 app.use('/api/createcourse', courses)
+app.use('/api/createexercise', exercise)
 
 
 

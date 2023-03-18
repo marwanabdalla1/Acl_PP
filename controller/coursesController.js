@@ -5,10 +5,17 @@ const CourseController = {
 
   createCourse: async (req, res) => {
     const course = new Course({
-      name: req.body.name,
+      title: req.body.title,
       author: req.body.author,
-      tags: req.body.tags,
-      isPublished: req.body.isPublished
+      date: req.body.date,
+      subject: req.body.subject,
+      instructor: req.body.instructor,
+      subtitles: req.body.subtitles, 
+      totalhours : req.body.totalhours,
+      rating : req.body.rating,
+      exercises: req.body.exercises
+
+     
     });
     
     try {
@@ -19,6 +26,9 @@ const CourseController = {
       res.status(500).json({ error: error.message });
     }
   }
+
+  
+
 };
 
 module.exports = CourseController;
