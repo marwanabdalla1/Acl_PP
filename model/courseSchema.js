@@ -1,12 +1,10 @@
 const { number } = require('joi')
 const mongoose = require('mongoose')
 
-// const connectDB = require('./dbconnect')
 
 
 
 
-// shoud i hardcode the total hours of the course or should it be calculated based on the total hours of the exercises available in the course
 
 const courseSchema = new mongoose.Schema({
     title: String,
@@ -24,9 +22,9 @@ const courseSchema = new mongoose.Schema({
         default: 0
       },
     price: Number, 
-    exercises: [{
+    subtitle: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise'
+        ref: 'Subtitle'
     }]
 })
 

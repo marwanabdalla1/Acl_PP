@@ -4,16 +4,18 @@ const CourseController = {
 
 
   createCourse: async (req, res) => {
-    const course = new Course({
+    const subtitle = new Course({
       title: req.body.title,
       author: req.body.author,
       date: req.body.date,
       subject: req.body.subject,
       instructor: req.body.instructor,
-      subtitles: req.body.subtitles, 
       totalhours : req.body.totalhours,
       rating : req.body.rating,
-      exercises: req.body.exercises
+     // exercises: req.body.exercises,
+      subtitles: req.body.subtitles
+
+      
 
      
     });
@@ -27,7 +29,7 @@ const CourseController = {
     }
   }
 
-  
+
 
 };
 
