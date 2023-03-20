@@ -1,6 +1,12 @@
 const Subtitle = require('../model/subtitleSchema')
 const Exercise = require('../model/exerciseSchema')
 const Course = require('../model/courseSchema')
+var fos = require('filter-objects');
+const { inspect } = require('util');
+
+
+const createQuery = require('filter-query').createQuery;
+
 
 const instructorController = {
 
@@ -46,7 +52,7 @@ const instructorController = {
     }, 
 
 
-    
+
 
     createCourse: async (req, res) => {
         const subtitle = new Course({
@@ -57,7 +63,6 @@ const instructorController = {
           instructor: req.body.instructor,
           totalhours : req.body.totalhours,
           rating : req.body.rating,
-         // exercises: req.body.exercises,
           subtitles: req.body.subtitles
     
           
@@ -72,10 +77,49 @@ const instructorController = {
         } catch (error) {
           res.status(500).json({ error: error.message });
         }
-      }
+      },
 
+      filterCourse: async (req, res) => {
+
+            let filter = {};
+            if (req.query.rating) {
+            filter.rating = req.query.rating;
+            }
+            if (req.query.subject) {
+            filter.subject = req.query.subject;
+            }
+
+            const courses = await Course.find(filter);
+
+        
+            console.log(req.query.rating)
+
+             res.json(courses)
+    
+    
+        }
+
+    , 
+
+    getCourses: async (req, res) => {
+
+        const results = await Course.find().populate({
+            path: 'subtitle',
+            select: 'name video totalhours exercises',
+            populate: {
+                path: 'exercises',
+                model: 'Exercise'
+              } 
+          })
+
+        console.log( inspect(results, { depth : null }) );
+    }
+
+  
+      
+    
 
 }
 
 
-module.exports = {createSubtitle, createExercise} 
+module.exports = instructorController

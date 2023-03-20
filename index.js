@@ -11,14 +11,7 @@ const exercise = require('./routes/instructorView')
 const express = require('express')
 
 
-// const React = require('react');
-// const { default: MyComponent } = require('./Components/reactcomp');
 
-// const ReactDOMServer = require('react-dom/server');
-
-// const html = ReactDOMServer.renderToString(<MyComponent />);
-
-// console.log(html);
 
 
 
@@ -36,14 +29,18 @@ const connectDB = require('./model/dbconnect')
 //in the index, we are going to use the the app routes, we will also add the conncection string, and the express app
 // bas 3ady momken ne3mel class tanya feha conncection string
 
+const { createExercise, createSubtitle, filterCourse, getCourses } = require('./controller/instructorController')
 
+const Course = require('./model/courseSchema');
+
+const Exercise = require('./model/exerciseSchema');
+
+const Subtitle = require('./model/subtitleSchema')
 
 //Connect to the DB 
 connectDB();
 
-
-
-
+getCourses()
 
 //get all published backend courses, sort them by their name, pick only their name and author and diplay the
 
@@ -56,8 +53,8 @@ connectDB();
 app.use('/api/createcourse', courses)
 app.use('/api/instructor', exercise)
 
+// filterCourse()
 
-
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3400
 
 app.listen(port, () => console.log(`Listening on Port ${port}`))
