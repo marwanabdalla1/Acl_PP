@@ -80,24 +80,27 @@ const instructorController = {
       },
 
       filterCourse: async (req, res) => {
-
-            let filter = {};
-            if (req.query.rating) {
-            filter.rating = req.query.rating;
+        const filters = {};
+        const filterKeys = ['rating', 'subject', 'category', 'price']; // add any other filter keys here
+    
+        // Loop through each filter key and add it to the filters object if it exists in the query params
+        filterKeys.forEach(key => {
+            if (req.query[key]) {
+                const filterValue = {};
+                Object.keys(req.query[key]).forEach(op => {
+                    filterValue[`$${op}`] = req.query[key][op];
+                });
+                filters[key] = filterValue;
             }
-            if (req.query.subject) {
-            filter.subject = req.query.subject;
-            }
+        });
+    
+        const courses = await Course.find(filters);
+    
+        res.json(courses);
+    }
 
-            const courses = await Course.find(filter);
-
-        
-            console.log(req.query.rating)
-
-             res.json(courses)
     
     
-        }
 
     , 
 

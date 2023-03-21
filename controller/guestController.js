@@ -8,7 +8,7 @@ const { inspect } = require('util');
 const createQuery = require('filter-query').createQuery;
 
 
-const instructorController = {
+const guestController = {
 
 
     createExercise: async (req, res) => {
@@ -122,4 +122,4 @@ const instructorController = {
 }
 
 
-module.exports = instructorController
+module.exports = guestController

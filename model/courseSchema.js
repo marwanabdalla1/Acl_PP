@@ -15,7 +15,6 @@ const courseSchema = new mongoose.Schema({
     },
     subject: String,
     instructor: String,
-    subtitles: String,
     totalhours: Number,
     rating: {
         type: Number,

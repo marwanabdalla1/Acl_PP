@@ -40,20 +40,17 @@ const Subtitle = require('./model/subtitleSchema')
 //Connect to the DB 
 connectDB();
 
-getCourses()
-
-//get all published backend courses, sort them by their name, pick only their name and author and diplay the
-
+//getCourses()
+// filterCourse()
 
 
 
 
-//routing fucntions
-//app.use('/', home)
+
 app.use('/api/createcourse', courses)
 app.use('/api/instructor', exercise)
 
-// filterCourse()
+filterCourse()
 
 const port = process.env.PORT || 3400
 
