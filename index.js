@@ -50,8 +50,7 @@ connectDB();
 app.use('/api/createcourse', courses)
 app.use('/api/instructor', exercise)
 
-filterCourse()
 
-const port = process.env.PORT || 3400
+const port = process.env.PORT || 3000
 
 app.listen(port, () => console.log(`Listening on Port ${port}`))

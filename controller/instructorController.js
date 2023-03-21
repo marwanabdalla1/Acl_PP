@@ -79,30 +79,58 @@ const instructorController = {
         }
       },
 
-      filterCourse: async (req, res) => {
-        const filters = {};
-        const filterKeys = ['rating', 'subject', 'category', 'price']; // add any other filter keys here
+
+
+    // filtery by rating, subject, and price
+  filterCourse: async (req, res) => {
+    const filters = {};
     
-        // Loop through each filter key and add it to the filters object if it exists in the query params
-        filterKeys.forEach(key => {
-            if (req.query[key]) {
-                const filterValue = {};
-                Object.keys(req.query[key]).forEach(op => {
-                    filterValue[`$${op}`] = req.query[key][op];
-                });
-                filters[key] = filterValue;
-            }
-        });
-    
-        const courses = await Course.find(filters);
-    
-        res.json(courses);
+
+    if (req.query.subject) {
+      filters.subject = req.query.subject;
+    }
+    if (req.query.rating){
+      filters.rating = req.query.rating
+    }
+    if (req.query.minRating & req.query.maxRating) {
+      
+      filters.rating = {$gte: req.query.minRating, $lte: req.query.maxRating}
+
+    }
+    if (req.query.price ==='free') {
+      filters.price =0
     }
 
+    if (req.query.price) {
+      filters.price = req.query.price
+    }
+
+    if (req.query.minPrice & req.query.maxPrice) {
+      filters.price = {$gte: req.query.minPrice, $lte: req.query.maxPrice}
+
+    }
     
+    const courses = await Course.find(filters);
+
+    
+    console.log(filters)
+    res.json(courses);
+  }
+  
     
 
-    , 
+
+    ,
+
+    searchCourse: async (req, res) => {
+      // we can search for a course by title, subject, or instructor
+      const filters = {}
+
+      if (req.query.title) {
+        filters.title
+      }
+    }
+    ,
 
     getCourses: async (req, res) => {
 

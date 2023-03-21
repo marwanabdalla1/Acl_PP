@@ -1,7 +1,12 @@
 7		guest/instructor/individual trainee/corporate trainee	view all the titles of the courses available including the total hours of the course and course rating
-8	5	guest/instructor/individual trainee 	view the price of each course
+        (select title, total hours, course rating)
+
+        
+8	5	guest/instructor/individual trainee 	view the price of each course (select price only)
 9		guest/instructor/individual trainee /corporate trainee	filter the courses based on a subject and/or rating
 10		guest/instructor/individual trainee 	filter the courses based on price (price can be FREE)
+
+
 11		guest/instructor/individual trainee /corporate trainee	search for a course based on course title or subject or instructor
 			
 

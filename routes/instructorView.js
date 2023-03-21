@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { createExercise, createSubtitle, filterCourse} = require('../controller/instructorController')
+const { createExercise, createSubtitle, filterCourse, filterCoursePrice} = require('../controller/instructorController')
 
 
 
@@ -13,5 +13,6 @@ router.post( '/createExercise', createExercise);
 router.post('/createsubtitle', createSubtitle)
 
 router.get('/filterCourse', filterCourse)
+router.get('/filterprice', filterCoursePrice )
 
 module.exports = router
