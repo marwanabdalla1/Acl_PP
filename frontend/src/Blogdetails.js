@@ -5,9 +5,15 @@ import useFetch from "./useFetch";
 
 const BlogDetails = () => {
     const {id} = useParams()
-    const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs/'+id)
+    console.log(id)
+    //fetch a specific course from the database
+    const {data: course, isPending, error} = useFetch('http://www.localhost:3500/api/instructor/getCourse?id='+id)
     const history = useHistory()
 
+    console.log(`Course Details: ${course}`)
+     //   console.log(`Course Details: ${courses.rating}`) //This is returning null
+
+    // localhost:3500/api/instructor/getCourse?id=6418c7ea9768bbad17043901
 
     const handleDelete = ()=> {
         fetch('http://localhost:8000/blogs/' + id, {
@@ -22,15 +28,15 @@ const BlogDetails = () => {
     }
     return ( 
         <div className="blog-details">
-            <h2>Blog Details  {id} </h2>
+            <h2>Course Details  {id} </h2>
             { isPending && <div> Loading... </div>}
             {error && <div> {error}</div>}
 
-            {blogs && 
+            {course && 
             (       <article>
-                        <h2>{ blogs.title }</h2>
-                        <p> Written by: { blogs.author }</p>
-                        <div>{ blogs.body }</div>
+                        <h2>{ course.title }</h2>
+                        <p> Written by: { course.author }</p>
+                        <div>{ course.subtitle }</div>
                     </article>
                     
             )

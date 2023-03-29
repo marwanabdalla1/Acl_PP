@@ -122,27 +122,7 @@ const instructorController = {
 
     ,
 
-    searchCourse: async (req, res) => {
-      // we can search for a course by title, subject, or instructor
-      const filters = {}
-
-      if (req.query.title) {
-        filters.title
-      }
-      if (req.query.subject) {
-        filters.subject
-      }
-      if (req.query.instructor) {
-        filters.instructor
-      }
-
-      
-      const courses = await Course.find(filters);
-      console.log(filters)
-      res.json(courses);
-
-    }
-    ,
+    
 
     getCourses: async (req, res) => {
 
@@ -154,8 +134,40 @@ const instructorController = {
                 model: 'Exercise'
               } 
           })
+ 
 
-        console.log( inspect(results, { depth : null }) );
+      //  console.log( inspect(results, { depth : null }) ); 
+
+        res.json(results)
+
+
+    },
+
+
+
+    getCourse: async (req, res) => {
+      const filters = {}
+
+      if (req.query.id) {
+        filters._id = req.query.id
+      }
+
+
+        const results = await Course.find(filters).populate({
+            path: 'subtitle',
+            select: 'name video totalhours exercises',
+            populate: {
+                path: 'exercises',
+                model: 'Exercise'
+              } 
+          })
+
+
+          console.log(filters)
+          console.log(results)
+           res.json(results)
+      
+
     }
 
   

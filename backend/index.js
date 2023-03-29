@@ -44,7 +44,17 @@ connectDB();
 // filterCourse()
 
 
-
+app.use((req, res, next) => {
+    // Allow all origins to access the API
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // Set the allowed HTTP methods to be used on the API
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    // Set the allowed headers to be used on the API
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    // Pass control to the next middleware
+    next();
+  });
+  
 
 
 app.use('/api/createcourse', courses)

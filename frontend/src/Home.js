@@ -9,14 +9,14 @@ const Home = () => {
    
     
 
-    const {data: blogs, isPending, error} = useFetch('http://localhost:8000/blogs')
+    const {data: courses, isPending, error} = useFetch('http://www.localhost:3500/api/instructor/getCourses')
 
     return (
     <div className="home">
        { isPending && <div> Loading... </div>}
-      {blogs && <BlogList blogs= {blogs} title="All Blogs!"></BlogList>}
+      {courses && <BlogList courses= {courses} title="All Courses!"></BlogList>}
     </div>
   );
 }
- 
+  
 export default Home;
