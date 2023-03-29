@@ -129,6 +129,18 @@ const instructorController = {
       if (req.query.title) {
         filters.title
       }
+      if (req.query.subject) {
+        filters.subject
+      }
+      if (req.query.instructor) {
+        filters.instructor
+      }
+
+      
+      const courses = await Course.find(filters);
+      console.log(filters)
+      res.json(courses);
+
     }
     ,
 
