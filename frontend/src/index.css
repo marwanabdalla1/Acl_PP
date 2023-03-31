@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 /* base styles */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
 * {
   margin: 0;
   font-family: "Quicksand";
@@ -10,13 +21,14 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  /* max-width: 600px; */
+  max-width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
   
 }
 .Navbar h1 {
-  color: #f1356d;
+  color: #4e35f1;
 }
 .Navbar .links {
   margin-left: auto;
@@ -27,30 +39,62 @@
   padding: 6px;
 }
 .Navbar a:hover {
-  color: #f1356d;
+  color: #4e35f1;
 }
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  margin-right: 0.5rem;
+}
+
+.search-bar button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
 .content {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
 }
 /* blog previews / list */
-.blog-preview {
+.course-preview {
   padding: 10px 16px;
   margin: 20px 0;
   border-bottom: 1px solid #fafafa;
 }
-.blog-preview:hover {
+.course-preview:hover {
   box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
 }
-.blog-preview h2 {
-  font-size: 20px;
-  color: #f1356d;
+.course-preview h2 {
+  font-size: 18px;
+  color: #4e35f1;
   margin-bottom: 8px;
 }
-.blog-preview a{
+.course-preview a{
   text-decoration: none;
 }
+
+.course-preview p{
+  font-style: italic;
+}
+
+
 /* create new blog form */
 .create {
   max-width: 400px;
@@ -63,7 +107,7 @@
 }
 .create h2 {
   font-size: 20px;
-  color: #f1356d;
+  color: #4e35f1;
   margin-bottom: 30px;
 }
 .create input, .create textarea, .create select {
@@ -75,10 +119,14 @@
   display: block;
 }
 .create button {
-  background: #f1356d;
+  background: #4e35f1;
   color: #fff;
   border: 0;
   padding: 8px;
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* Blog Details */
+
+

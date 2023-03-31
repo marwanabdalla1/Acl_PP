@@ -1,17 +1,17 @@
 import './index.css';
-import Navbar from './Navbar'
-import Home from './Home'
+import Navbar from './Components/Navbar'
+import Home from './Pages/Home'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './create';
-import BlogDetails from './Blogdetails';
+import CourseDetails from './Components/CourseDetails';
 import Notfound from './Notfound';
+import MediaCard from './Components/CardPreview';
+import CoursePage from './Pages/CoursePage';
+import CourseSearch from './Components/CourseSearch'
+import PrimarySearchAppBar from './Components/AppBar';
+ 
 
-
-
-// How do i connet react to node js application
-
-
-
+//check for the npm youtube player and look for a demo
 
 function App() {
  // const title = 'Welcome to the blog'
@@ -21,20 +21,27 @@ function App() {
     <Router>
       <div className="App">
       <Navbar/>
+    {/* <PrimarySearchAppBar/> */}
       <div className="content">
         <Switch>
           <Route exact path = "/">
-            <Home/>
+            <CoursePage/>
           </Route>
           <Route path = "/create">
             <Create/>
           </Route>
-          <Route path = "/blogs/:id">
-            <BlogDetails/>
+          <Route path = "/courses/:id">
+            <CourseDetails/>
+          </Route>
+          <Route path = "/searchcourse/:id">
+            <CourseSearch/>
           </Route>
           <Route path = "*">
-            <Notfound/>
+            <MediaCard/>
           </Route>
+          
+          
+
         </Switch>
       </div>
     </div>

@@ -137,13 +137,26 @@ const instructorController = {
  
 
       //  console.log( inspect(results, { depth : null }) ); 
-
+        
         res.json(results)
 
 
     },
 
+    searchCourse: async (req, res) => {
+      const searchQuery = req.query.q;
 
+      const courses = await Course.find({
+        $or: [
+          {title: {$regex: searchQuery, $options: 'i'}},
+          {author: {$regex: searchQuery, $options: 'i'}},
+          {subject: {$regex: searchQuery, $options: 'i'}},
+        ]
+      })
+      console.log(courses)
+      res.json(courses)
+    }
+    ,
 
     getCourse: async (req, res) => {
       const filters = {}
@@ -153,7 +166,7 @@ const instructorController = {
       }
 
 
-        const results = await Course.find(filters).populate({
+        const results = await Course.findById(filters).populate({
             path: 'subtitle',
             select: 'name video totalhours exercises',
             populate: {
