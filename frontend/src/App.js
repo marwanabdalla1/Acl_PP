@@ -9,20 +9,23 @@ import MediaCard from './Components/CardPreview';
 import CoursePage from './Pages/CoursePage';
 import CourseSearch from './Components/CourseSearch'
 import PrimarySearchAppBar from './Components/AppBar';
- 
-
+ import Profile from './Components/profile';
+import Login from './Components/login';
+import ChangeColor from './Components/ChangeColor';
 //check for the npm youtube player and look for a demo
 
 function App() {
  // const title = 'Welcome to the blog'
   const link = "www.google.com"
-  
+   
   return (
     <Router>
       <div className="App">
       <Navbar/>
-    {/* <PrimarySearchAppBar/> */}
-      <div className="content">
+      <Profile/>
+      <Login></Login>
+      <ChangeColor/>
+        {/* <div className="content">
         <Switch>
           <Route exact path = "/">
             <CoursePage/>
@@ -43,7 +46,7 @@ function App() {
           
 
         </Switch>
-      </div>
+      </div> */}
     </div>
     </Router>
     
