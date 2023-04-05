@@ -1,6 +1,6 @@
 import './index.css';
 import Navbar from './Components/Navbar'
-import Home from './Pages/Home'
+// import Home from '../../backend/Home'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './create';
 import CourseDetails from './Components/CourseDetails';
@@ -9,9 +9,14 @@ import MediaCard from './Components/CardPreview';
 import CoursePage from './Pages/CoursePage';
 import CourseSearch from './Components/CourseSearch'
 import PrimarySearchAppBar from './Components/AppBar';
- import Profile from './Components/profile';
+import Drawer from './Components/drawer'
+import Profile from './Components/profile';
 import Login from './Components/login';
 import ChangeColor from './Components/ChangeColor';
+import ResponsiveDrawer from './Components/drawer';
+import CourseFilter from './Components/CourseFilter'
+
+import fetchComp from './Components/useEffect'
 //check for the npm youtube player and look for a demo
 
 function App() {
@@ -21,15 +26,22 @@ function App() {
   return (
     <Router>
       <div className="App">
-      <Navbar/>
-      <Profile/>
+      {/* <Navbar/> */}
+      {/* <Profile/>
       <Login></Login>
-      <ChangeColor/>
-        {/* <div className="content">
+      <ChangeColor/> */}
+        <div className="content">
         <Switch>
-          <Route exact path = "/">
-            <CoursePage/>
-          </Route>
+        <Route exact path="/">
+          <div style={{ display: 'flex', height: '100%' }}>
+            <div style={{ flex: '0 0 15%' }}>
+              <ResponsiveDrawer />
+            </div>
+            <div style={{ flex: '1' }}>
+              <CoursePage />
+            </div>
+          </div>
+        </Route>
           <Route path = "/create">
             <Create/>
           </Route>
@@ -39,6 +51,10 @@ function App() {
           <Route path = "/searchcourse/:id">
             <CourseSearch/>
           </Route>
+          <Route path = "/Filtercourse/:id">
+            <CourseFilter/>
+          </Route>
+          
           <Route path = "*">
             <MediaCard/>
           </Route>
@@ -46,7 +62,7 @@ function App() {
           
 
         </Switch>
-      </div> */}
+      </div>
     </div>
     </Router>
     

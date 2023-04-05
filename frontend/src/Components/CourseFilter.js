@@ -1,10 +1,18 @@
 import { Grid } from '@mui/material';
 import MediaCard from '../Components/CardPreview';
-import Navbar from '../Components/Navbar';
 import useFetch from '../functions/useFetch';
+import { useHistory, useParams } from "react-router-dom";
+
+
+
+// this will have the fetch id similar to the one get course
 
 function CourseGrid() {
-  const { data: courses, isPending, error } = useFetch('http://www.localhost:3500/api/instructor/getCourses');
+    const {id} = useParams()
+    console.log(id)
+
+    // we will need to change this url
+  const { data: courses, isPending, error } = useFetch('http://localhost:3500/api/instructor/filterCourse?'+id);
 
   if (isPending) {
     return <div>Loading...</div>;
@@ -13,14 +21,8 @@ function CourseGrid() {
   // render an error message if there was an error fetching the data
   if (error) {
     return <div>{error}</div>;
-  }
-
+  } 
   return (
-    <div style={{ width: '100%' }}>
-<div className= "Navbardiv"style={{ width: '100%' }}>
-      <Navbar />
-    </div>  
-    <div className='coursesdiv'>
     <Grid container spacing={2}>
       {courses.map((course) => (
         <Grid item key={course.id} xs={12} sm={6} md={4}>
@@ -28,10 +30,6 @@ function CourseGrid() {
         </Grid>
       ))}
     </Grid>
-    </div>
-     
-    </div>
-   
   );
 }
 

@@ -105,7 +105,8 @@ const instructorController = {
       filters.price = req.query.price
     }
 
-    if (req.query.minPrice & req.query.maxPrice) {
+
+    else if (req.query.minPrice & req.query.maxPrice) {
       filters.price = {$gte: req.query.minPrice, $lte: req.query.maxPrice}
 
     }

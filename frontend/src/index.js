@@ -7,10 +7,14 @@ import {configureStore} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
 import userReducer from './features/user'
 import themeReducer from './features/theme'
+import CourseReducer from './features/coors'
+
+
 const store = configureStore({
   reducer: {
     user: userReducer,
     theme: themeReducer,
+    course: CourseReducer,
   },
 })
 
