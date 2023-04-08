@@ -6,56 +6,60 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useHistory } from "react-router-dom";
-import SubtitlesForm from './subtitlesForm'
+import SubtitlesForm from './subtitlesForm';
 
-const CourseForm =() => {
+// import './CourseForm.css';
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const [Course, setCourse] = useState([])
-    const history = useHistory();
+const CourseForm = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [course, setCourse] = useState({});
+  const history = useHistory();
 
-//   const onSubmit = data => console.log(data);
-    
+  const onSubmit = (data) => {
+    setCourse(data);
+  };
 
-  const onSubmit = data => setCourse(data);
-
-    console.log(Course)
-
-
-    const handleSaveAndContinue = () => {
-        history.push({
-          pathname: '/subtitleform',
-          state: { Course }
-        });
-      };
-
+  const handleSaveAndContinue = () => {
+    history.push({
+      pathname: '/subtitleform',
+      state: { course }
+    });
+  };
 
   return (
-    /* "handleSubmit" will validate your inputs before invoking "onSubmit" */
-    <form onSubmit={handleSubmit(onSubmit)}>
-      {/* register your input into the hook by invoking the "register" function */}
-      <input {...register("Title:", { required: true })} />
-        <input {...register("Author:", { required: true })} />
-      <input {...register("Subject:", { required: true })} />
-      <input {...register("Instructor:", { required: true })} />
-      <input {...register("totalhours:", { required: true })} />
-      <input {...register("price:", { required: true })} />
+    <form className="course-form" onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor="title">Title:</label>
+      <input id="title" {...register("Title", { required: true })} />
+      {errors.Title && <span className="error">This field is required</span>}
 
-      {/* errors will return when field validation fails  */}
-      {errors.exampleRequired && <span>This field is required</span>}
-      
-      <Link
-        to={{
-            pathname: "/subtitleform",
-            state: { Course: Course }
-        }}
-        >
-         <input type="button" value="Save and Continue" />
-      </Link>
-      <input type="submit" value="Save and Add Another Exercise" />
+      <label htmlFor="author">Author:</label>
+      <input id="author" {...register("Author", { required: true })} />
+      {errors.Author && <span className="error">This field is required</span>}
 
+      <label htmlFor="subject">Subject:</label>
+      <input id="subject" {...register("Subject", { required: true })} />
+      {errors.Subject && <span className="error">This field is required</span>}
+
+      <label htmlFor="instructor">Instructor:</label>
+      <input id="instructor" {...register("Instructor", { required: true })} />
+      {errors.Instructor && <span className="error">This field is required</span>}
+
+      <label htmlFor="total-hours">Total Hours:</label>
+      <input id="total-hours" {...register("totalhours", { required: true })} />
+      {errors.totalhours && <span className="error">This field is required</span>}
+
+      <label htmlFor="price">Price:</label>
+      <input id="price" {...register("price", { required: true })} />
+      {errors.price && <span className="error">This field is required</span>}
+
+      <div className="button-container">
+        <input className="submit-button" type="submit" value="Save and Add Another Exercise" />
+        <button className="save-button" onClick={handleSaveAndContinue}>Save and Continue</button>
+      </div>
     </form>
+   
   );
-}
+};
+
 export default CourseForm;
 
