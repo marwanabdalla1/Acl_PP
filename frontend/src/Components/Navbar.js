@@ -27,6 +27,10 @@ const Navbar = () => {
         <Link to={`/searchcourse/${courseinfo}`}>
           <FontAwesomeIcon icon={faSearch} />
         </Link>
+        
+        <Link to={`/createcourse`}>
+          <button> Create Course</button>
+        </Link>
       </div>
 {/* we will make this similar to the course details link  */}
 

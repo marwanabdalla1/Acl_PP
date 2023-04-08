@@ -15,8 +15,10 @@ import Login from './Components/login';
 import ChangeColor from './Components/ChangeColor';
 import ResponsiveDrawer from './Components/drawer';
 import CourseFilter from './Components/CourseFilter'
-
+import ExerciseForm from './Components/exerciseform';
+import SubtitlesForm from './Components/subtitlesForm'
 import fetchComp from './Components/useEffect'
+import CourseForm from './Components/CourseForm';
 //check for the npm youtube player and look for a demo
 
 function App() {
@@ -42,6 +44,13 @@ function App() {
             </div>
           </div>
         </Route>
+
+          <Route path="/createcourse">
+            <CourseForm/>
+            </Route>
+
+          <Route path="/subtitleform" component={SubtitlesForm} />
+
           <Route path = "/create">
             <Create/>
           </Route>
