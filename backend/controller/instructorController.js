@@ -10,30 +10,39 @@ const createQuery = require('filter-query').createQuery;
 
 const instructorController = {
 
+  createCourse: async (req, res) => { 
+   // console.log(req.body.course)
+    const course = new Course({
+      title: req.body.course.title,
+      author: req.body.course.author,
+      date: req.body.course.date,
+      subject: req.body.course.ubject,
+      instructor: req.body.course.instructor,
+      totalhours : req.body.course.totalhours,
+      rating : req.body.course.rating,
+      subtitles: req.body.course.subtitles
 
-    createExercise: async (req, res) => {
-        const exercise = new Exercise ({
-            question: req.body.question,
-            chocies: req.body.choices,
-            answer: req.body.answer,
-            subtitleid: req.body.subtitleid
-        })
+      
 
+     
+    });
+    
+    try {
+      const result = await course.save();
+      res.json(result);
+      console.log(course)
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
 
-        try {
-            const result = await exercise.save()
-            res.json(result)
-            console.log(exercise)
-        } catch (eroor) {
-            res.status(500).json({error: error.message})
-        }
-    },
+ 
 
 
 
 
     createSubtitle: async (req, res) => {
-        const subtitle = new Course({
+        const subtitle = new Subtitle({
           name: req.body.name,
           video: req.body.video,
           totalhours: req.body.totalhours,
@@ -53,32 +62,25 @@ const instructorController = {
 
 
 
+    createExercise: async (req, res) => {
+      const exercise = new Exercise ({
+          question: req.body.question,
+          chocies: req.body.choices,
+          answer: req.body.answer,
+          subtitleid: req.body.subtitleid
+      })
 
-    createCourse: async (req, res) => {
-        const subtitle = new Course({
-          title: req.body.title,
-          author: req.body.author,
-          date: req.body.date,
-          subject: req.body.subject,
-          instructor: req.body.instructor,
-          totalhours : req.body.totalhours,
-          rating : req.body.rating,
-          subtitles: req.body.subtitles
-    
-          
-    
-         
-        });
-        
-        try {
-          const result = await course.save();
-          res.json(result);
-          console.log(course)
-        } catch (error) {
-          res.status(500).json({ error: error.message });
-        }
-      },
 
+      try {
+          const result = await exercise.save()
+          res.json(result)
+          console.log(exercise)
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({error: error.message});
+      }
+  },
+   
 
 
     // filtery by rating, subject, and price

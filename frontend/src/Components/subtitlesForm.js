@@ -7,14 +7,16 @@ import { Link, useHistory } from "react-router-dom";
 const SubtitlesForm = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
-  const location = useLocation();
-  // const { Course } = location.state?.Course || {};
-  // const { Course } = location.state
+  let location = useLocation();
+
+  // const course = location.state?.course;
+  // const Course = course ? course.Course : undefined;
+  const { Course } = location.state
 
 
 
-  // console.log(Course)
-  // // const  [corz, setCorz] = useState([Course])
+  console.log(Course)
+  const  [corz, setCorz] = useState([Course])
   const [subtitles, setSubtitles] = useState([{title: "", Video: "", exercises: []}]);
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
   const [exercises, setExercises] = useState([]);

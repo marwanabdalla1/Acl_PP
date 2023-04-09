@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { createExercise, createSubtitle, filterCourse, getCourses, getCourse, searchCourse} = require('../controller/instructorController')
+const { createCourse,createExercise, createSubtitle, filterCourse, getCourses, getCourse, searchCourse} = require('../controller/instructorController')
 
 
 
@@ -8,6 +8,9 @@ const { createExercise, createSubtitle, filterCourse, getCourses, getCourse, sea
     
 // })
 
+
+
+router.post('/createCourse', createCourse)
 
 router.post( '/createExercise', createExercise);
 router.post('/createsubtitle', createSubtitle)
