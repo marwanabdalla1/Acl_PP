@@ -28,7 +28,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-      {/* <Navbar/> */}
+      <Navbar/>
       {/* <Profile/>
       <Login></Login>
       <ChangeColor/> */}
@@ -50,6 +50,7 @@ function App() {
             </Route>
 
           <Route path="/subtitleform" component={SubtitlesForm} />
+          <Route path="/exerciseform" component={ExerciseForm} />
 
           <Route path = "/create">
             <Create/>

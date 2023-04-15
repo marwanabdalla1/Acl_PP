@@ -1,6 +1,7 @@
 const Subtitle = require('../model/subtitleSchema')
 const Exercise = require('../model/exerciseSchema')
 const Course = require('../model/courseSchema')
+const Question = require('../model/questionSchema')
 var fos = require('filter-objects');
 const { inspect } = require('util');
 
@@ -10,17 +11,17 @@ const createQuery = require('filter-query').createQuery;
 
 const instructorController = {
 
-  createCourse: async (req, res) => { 
-   // console.log(req.body.course)
+  createCourses: async (req, res) => { 
+   console.log(req.body.course.title)
     const course = new Course({
       title: req.body.course.title,
       author: req.body.course.author,
-      date: req.body.course.date,
-      subject: req.body.course.ubject,
+      subject: req.body.course.subject,
       instructor: req.body.course.instructor,
       totalhours : req.body.course.totalhours,
       rating : req.body.course.rating,
-      subtitles: req.body.course.subtitles
+      price: req.body.course.price,
+      
 
       
 
@@ -42,11 +43,16 @@ const instructorController = {
 
 
     createSubtitle: async (req, res) => {
+      console.log(req.body.subtitle.courseid)
         const subtitle = new Subtitle({
-          name: req.body.name,
-          video: req.body.video,
-          totalhours: req.body.totalhours,
-          exercises: req.body.exercises,
+          name: req.body.subtitle.name,
+          video: req.body.subtitle.video,
+          totalhours: req.body.subtitle.totalhours,
+          courseid: req.body.subtitle.courseid,
+          // exercises: req.body.subtitle.exercises.map(id => mongoose.Types.ObjectId(id)),
+          // courseid: req.body.subtitle.courseid.map(id => mongoose.Types.ObjectId(id))
+          // courseid: [req.body.subtitle.courseid[0].courseid] // extract the courseid from the first element of the array
+
     
        
       });
@@ -82,6 +88,36 @@ const instructorController = {
   },
    
 
+    createQuestion: async (req, res) => {
+      const question = new Question ({
+          question: req.body.question,
+          chocies: req.body.choices,
+          answer: req.body.answer,
+          courseid: req.body.courseid
+      })
+
+
+      try {
+          const result = await question.save()
+          res.json(result)
+          console.log(question)
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({error: error.message});
+      }
+  },
+   
+
+  migrate: async  (req,res) => {
+    const subtitles = await Subtitle.find({});
+    for (const subtitle of subtitles) {
+      subtitle.courseid = subtitle.courseid[0];
+      await subtitle.save();
+    }
+    console.log('Migration complete!');
+  }
+  
+  ,
 
     // filtery by rating, subject, and price
   filterCourse: async (req, res) => {

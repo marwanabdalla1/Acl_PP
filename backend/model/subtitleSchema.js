@@ -10,10 +10,10 @@ const subtitleSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Exercise'
       }],
-    courseid: [{
-        type: mongoose.Schema.Types.ObjectId,
+      courseid: {
+        type: String,
         ref: 'Course'
-    }]
+      }
   });
 
   

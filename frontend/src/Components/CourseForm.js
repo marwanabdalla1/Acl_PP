@@ -1,6 +1,4 @@
-// I could create a use state up that whenenever i create this data it concatenates to the array of use state
 
-// I can make the exercise component as a parent to the subtitles component that can then pass its form data as a prop?
 
 
 
@@ -12,6 +10,7 @@ import { Link, useHistory } from "react-router-dom";
 import SubtitlesForm from './subtitlesForm';
 import Axios from 'axios';
 
+  
 
 
 const CourseForm = () => {
@@ -19,81 +18,79 @@ const CourseForm = () => {
   const [course, setCourse] = useState({});
   const history = useHistory();
 
+  let [courseID, setCourseID] = useState('');
 
-  // const onSubmit = async (data) => {
-  //   console.log(data)
-  //   await setCourse(data);
-  //   console.log(course)
-  //   Axios.post('http://localhost:3500/api/instructor/createCourse', {
-  //     course
-  //    })
-  //    .then(response => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
-
-  // };
+  
 
   const onSubmit = async (data) => {
-    console.log(data);
     await setCourse(data);
+    
+    // if i add the post here it submits an empty object
   };
+
+
+
+  // useEffect(() => {
+  //   if (course.title) {
+  //     // console.log(course)
+  //  Axios.post('http://localhost:3500/api/instructor/createCourses', {
+  //       course
+  //     })
+
+  //     .then(response => {
+  //       console.log(response.data);
+  //        // console.log('Course ID:', response.data._id);
+  //         setCourseID(response.data._id);
+          
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+
+  //      history.push({
+  //     pathname: '/subtitleform',
+  //     state: { Course: course,
+  //             CourseIdz: courseID
+  //      }
+  //   });
+  //   }
+  //   console.log('Hello')
+  //   console.log(courseID)
+
+  // }, [course]);
+
 
   useEffect(() => {
     if (course.title) {
-      console.log(course)
-      Axios.post('http://localhost:3500/api/instructor/createCourse', {
+      Axios.post('http://localhost:3500/api/instructor/createCourses', {
         course
       })
-
-      
-      .then(response => {
-        console.log(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-       history.push({
-      pathname: '/subtitleform',
-      state: { Course: course }
-    });
+        .then(response => {
+          console.log(response.data);
+          setCourseID(response.data._id);
+          history.push({
+            pathname: '/subtitleform',
+            state: {
+              Course: course,
+              CourseIdz: response.data._id
+            }
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
+    console.log('Hello')
+    console.log(courseID)
   }, [course]);
-  //  const onSubmit =  async (data) => {
-  //   console.log(data)
-  //    setCourse(data);
-  //   console.log(course); // logs the updated course object
-  //   if (Object.keys(data).length > 0) {
-  //   history.push({
-  //     pathname: '/subtitleform',
-  //     state: { course }
-  //   });
-  // }
-  // };
+  
 
 
 
-  // const handleSaveAndContinue = async (data) => {
-  //   await setCourse(data);
-  //   console.log(course)
 
-  //   history.push({
-  //     pathname: '/subtitleform',
-  //     state: { course }
-  //   });
-  // };
-  const handleSaveAndContinue = async (data) => {
-    console.log(data)
-    await setCourse(data);
-    console.log(course); // logs the updated course object
-    history.push({
-      pathname: '/subtitleform',
-      state: { course }
-    });
-  };
+
+
+
   
   
 
@@ -114,6 +111,10 @@ const CourseForm = () => {
       <label htmlFor="instructor">Instructor:</label>
       <input id="instructor" {...register("instructor", { required: true })} />
       {errors.instructor && <span className="error">This field is required</span>}
+
+      <label htmlFor="rating">Rating:</label>
+      <input id="rating" {...register("rating", { required: true })} />
+      {errors.rating && <span className="error">This field is required</span>}
 
       <label htmlFor="total-hours">Total Hours:</label>
       <input id="total-hours" {...register("totalhours", { required: true })} />

@@ -3,30 +3,20 @@ const mongoose = require('mongoose')
 
 
 const exerciseSchema = new mongoose.Schema({
-    question: {
-      type: String,
-      required: true
-    },
-    choices: {
-      type: [String],
-      required: true,
-      validate: {
-        validator: function(choices) {
-          return choices.length === 4; // only allow four choices
-        },
-        message: 'MCQ must have exactly 4 choices'
-      }
-    },
-    answer: {
-      type: String,
-      required: true,
-      enum: ['A', 'B', 'C', 'D']
-    },
+  name: String,
 
-    subtitleid:[ {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Subtitle'
-    }]
+
+  // the question id references the list of questions objects
+  questionid: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Question'
+  }],
+
+  //the subtitle id reference the subtitle to which this exercise object belong to 
+  subtitleid: {
+    type: String,
+    ref: 'Subtitle'
+  }
   });
 
 const Exercise = mongoose.model('Exercise', exerciseSchema)
