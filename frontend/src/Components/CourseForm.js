@@ -77,11 +77,10 @@ const CourseForm = () => {
           });
         })
         .catch(error => {
-          console.log(error);
+          console.log(error.message);
         });
     }
-    console.log('Hello')
-    console.log(courseID)
+  
   }, [course]);
   
 

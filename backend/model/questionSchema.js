@@ -21,11 +21,11 @@ const questionSchema = new mongoose.Schema({
       required: true,
       enum: ['A', 'B', 'C', 'D']
     },
-
-    exerciseid:[ {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise'
-    }]
+    exerciseid: {
+      type: String,
+      ref: 'Exercise'
+    }
+   
   });
 
 const Question = mongoose.model('Question', questionSchema)

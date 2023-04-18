@@ -59,24 +59,29 @@ const SubtitlesForm = () => {
     Axios.post('http://localhost:3500/api/instructor/createsubtitle', {
       subtitle
       })
+   
       .then(response => {
         console.log('Subtitle ID:', response.data._id);
         setSubtitleid(response.data._id) ; 
-        console.log(subtitle)
-    } )
-      // .then(response => {
-      //   console.log('Subtitle ID:', response.data._id);
-      //   setSubtitleid(response.data._id) ; 
-      //   history.push({
-      //     pathname: '/exerciseform',
-      //     state: {
-      //       Subtitleid: subtitleid,
-      //     }
-      //   });  })
-      //   .catch(error => {
-      //     console.log(error);
-      //   });
-  }
+        // we could add the saving subtitle id to the course id one here
+
+
+        // we will find this course id and then modify it's content, in other words add the it of the subtitle id to the course
+        Axios.put('http://localhost:3500/api/instructor/modifycourse?id='+CourseIdz, {subtitleId: response.data._id})
+
+
+        //it is an update request that finds the course with this subtitle and then update the course array with that new subtitle
+        history.push({
+          pathname: '/exerciseform',
+          state: {
+            Subtitleid: response.data._id,
+            Courseid: CourseIdz
+          }
+        });  })
+        .catch(error => {
+          console.log(error);
+        });
+  } 
     
   }, [subtitle]); 
  

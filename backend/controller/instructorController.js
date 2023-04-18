@@ -70,10 +70,9 @@ const instructorController = {
 
     createExercise: async (req, res) => {
       const exercise = new Exercise ({
-          question: req.body.question,
-          chocies: req.body.choices,
-          answer: req.body.answer,
-          subtitleid: req.body.subtitleid
+          name: req.body.exercise.name,
+          questionid: req.body.exercise.questionid,
+          subtitleid: req.body.exercise.subtitleid
       })
 
 
@@ -88,24 +87,24 @@ const instructorController = {
   },
    
 
-    createQuestion: async (req, res) => {
-      const question = new Question ({
-          question: req.body.question,
-          chocies: req.body.choices,
-          answer: req.body.answer,
-          courseid: req.body.courseid
-      })
-
-
-      try {
-          const result = await question.save()
-          res.json(result)
-          console.log(question)
-      } catch (error) {
-        console.error(error);
-        res.status(500).json({error: error.message});
-      }
-  },
+  createQuestion: async (req, res) => {
+    const choices = Array.isArray(req.body.question.choices) ? req.body.question.choices : [req.body.question.choices];
+    const question = new Question ({
+      question: req.body.question.question,
+      choices: choices.map(choice => choice.trim()),
+      answer: req.body.question.answer,
+      exerciseid: req.body.question.exerciseid
+    });
+    try {
+      const result = await question.save();
+      res.json(result);
+      console.log(question);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({error: error.message});
+    }
+  }
+  ,
    
 
   migrate: async  (req,res) => {
@@ -197,7 +196,9 @@ const instructorController = {
     }
     ,
 
-    getCourse: async (req, res) => {
+
+
+    updatecourse: async (req, res) => {
       const filters = {}
 
       if (req.query.id) {
@@ -205,6 +206,96 @@ const instructorController = {
       }
 
 
+      try {
+     const course = await Course.findById(filters)  
+    //course returned correctly
+    if(!course) return 
+
+    // 
+      console.log(course)
+      const subtitleid = req.body.subtitleId
+
+      course.subtitle.push(subtitleid)
+
+      const updatedCourse = await course.save()
+      console.log(updatedCourse)
+      }
+    catch (error) {
+      console.error('Error updating course:', error)
+      res.status(500).json({
+        error: 'Internal server error'
+      })
+    }
+    },
+
+
+
+    updatesubtitle: async (req, res) => {
+      const filters = {}
+
+      if (req.query.id) {
+        filters._id = req.query.id
+      }
+
+
+      try {
+     const subtitle = await Subtitle.findById(filters)  
+    //course returned correctly
+    if(!subtitle) return 
+
+    // 
+      console.log(req.body.exerciseId)
+      const exerciseid = req.body.exerciseId
+
+      subtitle.exercises.push(exerciseid)
+
+      const updatedSubtitle = await subtitle.save()
+      console.log(updatedSubtitle)
+      }
+    catch (error) {
+      console.error('Error updating subtitle:', error)
+      res.status(500).json({
+        error: 'Internal server error'
+      })
+    }
+    },
+    updateexercise: async (req, res) => {
+      const filters = {}
+
+      if (req.query.id) {
+        filters._id = req.query.id
+      }
+
+
+      try {
+     const exercise = await Exercise.findById(filters)  
+    //course returned correctly
+    if(!exercise) return 
+
+    // 
+      console.log(req.body.questionid)
+      const questionid = req.body.questionid
+
+      exercise.questionid.push(questionid)
+
+      const updatedExcersie = await exercise.save()
+      console.log(updatedExcersie)
+      }
+    catch (error) {
+      console.error('Error updating exercise:', error)
+      res.status(500).json({
+        error: 'Internal server error'
+      })
+    }
+    },
+    getCourse: async (req, res) => {
+      const filters = {}
+
+      if (req.query.id) {
+        filters._id = req.query.id
+      }
+
+      
         const results = await Course.findById(filters).populate({
             path: 'subtitle',
             select: 'name video totalhours exercises',
