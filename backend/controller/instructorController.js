@@ -42,20 +42,17 @@ const instructorController = {
 
 
 
-    createSubtitle: async (req, res) => {
-      console.log(req.body.subtitle.courseid)
-        const subtitle = new Subtitle({
-          name: req.body.subtitle.name,
-          video: req.body.subtitle.video,
-          totalhours: req.body.subtitle.totalhours,
-          courseid: req.body.subtitle.courseid,
-          // exercises: req.body.subtitle.exercises.map(id => mongoose.Types.ObjectId(id)),
-          // courseid: req.body.subtitle.courseid.map(id => mongoose.Types.ObjectId(id))
-          // courseid: [req.body.subtitle.courseid[0].courseid] // extract the courseid from the first element of the array
-
-    
-       
-      });
+  createSubtitle: async (req, res) => {
+    console.log(req.body.subtitle)
+    const videos = req.body.subtitle.video;
+    const subtitle = new Subtitle({
+      name: req.body.subtitle.name,
+      video: videos.map(video => video.video.trim()),
+      totalhours: req.body.subtitle.totalhours,
+      courseid: req.body.subtitle.courseid,
+      // exercises: req.body.subtitle.exercises.map(id => mongoose.Types.ObjectId(id)),
+      // courseid: req.body.subtitle.courseid.map(id => mongoose.Types.ObjectId(id))
+    });
       
       try {
         const result = await subtitle.save();

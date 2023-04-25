@@ -4,7 +4,10 @@ const mongoose = require('mongoose')
 
 const subtitleSchema = new mongoose.Schema({
     name: String,
-    video: String,
+    video: {
+      type: [String],
+      required: true
+    },
     totalhours: Number,
     exercises: [{
         type: mongoose.Schema.Types.ObjectId,
