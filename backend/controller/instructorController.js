@@ -3,10 +3,10 @@ const Exercise = require('../model/exerciseSchema')
 const Course = require('../model/courseSchema')
 const Question = require('../model/questionSchema')
 var fos = require('filter-objects');
-const { inspect } = require('util');
+// const { inspect } = require('util');
 
 
-const createQuery = require('filter-query').createQuery;
+// const createQuery = require('filter-query').createQuery;
 
 
 const instructorController = {
@@ -20,12 +20,7 @@ const instructorController = {
       instructor: req.body.course.instructor,
       totalhours : req.body.course.totalhours,
       rating : req.body.course.rating,
-      price: req.body.course.price,
-      
-
-      
-
-     
+      price: req.body.course.price,  
     });
     
     try {
@@ -285,6 +280,8 @@ const instructorController = {
       })
     }
     },
+
+
     getCourse: async (req, res) => {
       const filters = {}
 
@@ -293,19 +290,33 @@ const instructorController = {
       }
 
       
-        const results = await Course.findById(filters).populate({
-            path: 'subtitle',
-            select: 'name video totalhours exercises',
+        // const results = await Course.findById(filters).populate({
+        //     path: 'subtitle',
+        //     select: 'name video totalhours exercises',
+        //     populate: {
+        //         path: 'exercises',
+        //         model: 'Exercise'
+        //       } 
+        //   })
+        const results = await Course.findById(filters)
+        .populate({
+          path: 'subtitle',
+          select: 'name video totalhours exercises',
+          populate: {
+            path: 'exercises',
+            model: 'Exercise',
+            select: 'name questionid',
             populate: {
-                path: 'exercises',
-                model: 'Exercise'
-              } 
-          })
-
+              path: 'questionid',
+              model: 'Question',
+              select: 'question choices answer'
+            }
+          }
+        })
 
           console.log(filters)
           console.log(results)
-           res.json(results)
+          res.json(results)
       
 
     }

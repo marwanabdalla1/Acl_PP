@@ -8,13 +8,9 @@ const BlogList = ({ courses, title }) => {
 
 
         {courses.map(course => (
-          <div className="course-preview" key={course._id} >
-            {/* This link is acts as a button and connects to the other link which is then calls the blog details component */}
-            
+          <div className="course-preview" key={course._id} >            
             <h2> {course.title}</h2>
             <p>{course.author}</p>
-
-
             <Link to = {`/blogs/${course._id}`}> 
               {/* <h2>{ course._id }</h2> */}
               <p>Course Details</p>

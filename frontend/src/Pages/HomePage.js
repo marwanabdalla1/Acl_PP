@@ -17,9 +17,7 @@ function CourseGrid() {
 
   return (
     <div style={{ width: '100%' }}>
-{/* <div className= "Navbardiv"style={{ width: '100%' }}>
-      <Navbar />
-    </div>   */}
+
     <div className='coursesdiv'>
     <Grid container spacing={2}>
       {courses.map((course) => (

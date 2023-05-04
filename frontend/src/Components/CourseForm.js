@@ -29,37 +29,6 @@ const CourseForm = () => {
   };
 
 
-
-  // useEffect(() => {
-  //   if (course.title) {
-  //     // console.log(course)
-  //  Axios.post('http://localhost:3500/api/instructor/createCourses', {
-  //       course
-  //     })
-
-  //     .then(response => {
-  //       console.log(response.data);
-  //        // console.log('Course ID:', response.data._id);
-  //         setCourseID(response.data._id);
-          
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-
-  //      history.push({
-  //     pathname: '/subtitleform',
-  //     state: { Course: course,
-  //             CourseIdz: courseID
-  //      }
-  //   });
-  //   }
-  //   console.log('Hello')
-  //   console.log(courseID)
-
-  // }, [course]);
-
-
   useEffect(() => {
     if (course.title) {
       Axios.post('http://localhost:3500/api/instructor/createCourses', {

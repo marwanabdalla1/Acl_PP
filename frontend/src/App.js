@@ -6,7 +6,7 @@ import Create from './create';
 import CourseDetails from './Components/CourseDetails';
 import Notfound from './Notfound';
 import MediaCard from './Components/CardPreview';
-import CoursePage from './Pages/CoursePage';
+import HomePage from './Pages/HomePage';
 import CourseSearch from './Components/CourseSearch'
 import PrimarySearchAppBar from './Components/AppBar';
 import Drawer from './Components/drawer'
@@ -19,6 +19,9 @@ import ExerciseForm from './Components/exerciseform';
 import SubtitlesForm from './Components/subtitlesForm'
 import fetchComp from './Components/useEffect'
 import CourseForm from './Components/CourseForm';
+import Drawer2 from './Components/Drawer2'
+
+import CVP from './Pages/CourseViewPage'
 //check for the npm youtube player and look for a demo
 
 function App() {
@@ -40,10 +43,11 @@ function App() {
               <ResponsiveDrawer />
             </div>
             <div style={{ flex: '1' }}>
-              <CoursePage />
+              <HomePage />
             </div>
           </div>
         </Route>
+
 
           <Route path="/createcourse">
             <CourseForm/>
@@ -56,7 +60,9 @@ function App() {
             <Create/>
           </Route>
           <Route path = "/courses/:id">
-            <CourseDetails/>
+            <div>
+            <CVP/>
+            </div>
           </Route>
           <Route path = "/searchcourse/:id">
             <CourseSearch/>
