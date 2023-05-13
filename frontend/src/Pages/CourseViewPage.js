@@ -48,7 +48,9 @@ const CVP = () => {
     const classes = useStyles
 
     const subtitle = course.subtitle
+// I can make in this list another component that will show the subtitles, we will have in it a hook for showing the rest of the code, but it should be in that subtitle component
 
+// We can also make this component have buttons that onclick sets the hook in the outercourse view page with the video or exercise component pressed 
     const subtitlelist = (subtitle) => (
         <List>
           {subtitle.map((subtitle) => {
