@@ -64,6 +64,7 @@ const CourseForm = () => {
 
   return (
     <form className="course-form" onSubmit={handleSubmit(onSubmit)}>
+    {/* //  <form class="flex flex-col w-400 mx-auto" onSubmit={handleSubmit(onSubmit)}>  */}
       <label htmlFor="title">Title:</label>
       <input id="title" {...register("title", { required: true })} />
       {errors.title && <span className="error">This field is required</span>}

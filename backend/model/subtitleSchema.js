@@ -3,21 +3,25 @@ const mongoose = require('mongoose')
 
 
 const subtitleSchema = new mongoose.Schema({
-    name: String,
-    video: {
-      type: [String],
+  name: String,
+  video: [{
+    vidname: String,
+    url: {
+      type: String,
       required: true
-    },
-    totalhours: Number,
-    exercises: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Exercise'
-      }],
-      courseid: {
-        type: String,
-        ref: 'Course'
-      }
-  });
+    }
+  }],
+  totalhours: Number,
+  exercises: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Exercise'
+  }],
+  courseid: {
+    type: String,
+    ref: 'Course'
+  }
+});
+
 
   
 

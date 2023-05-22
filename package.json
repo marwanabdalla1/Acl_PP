@@ -10,6 +10,8 @@
     "@mui/material": "^5.11.15",
     "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
-    "scheduler": "^0.23.0"
+    "react-split": "^2.0.14",
+    "scheduler": "^0.23.0",
+    "split": "^1.0.1"
   }
 }

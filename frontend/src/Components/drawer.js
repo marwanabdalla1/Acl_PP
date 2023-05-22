@@ -79,8 +79,9 @@ function ResponsiveDrawer(props) {
 
 
   const drawer = (
-    <div>
-      <div className={classes.toolbar} />
+    <div >
+      {/* <div className={classes.toolbar} /> */}
+      <div  />
       <Divider />
      <h2>Filter Courses</h2>
      <RatingSlider/>
@@ -98,54 +99,57 @@ function ResponsiveDrawer(props) {
     </div>
   );
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  // const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <nav className={classes.drawer} aria-label="mailbox folders">
+    // <div className={classes.root}>
+    <div class="max-w-xs "  >
+      <h2>Testing</h2>
+      {/* <CssBaseline /> */}
+      {/* <nav className={classes.drawer} aria-label="mailbox folders"> */}
+      {/* <nav  aria-label="mailbox folders"> */}
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-        <Hidden smUp implementation="css">
-          <Drawer
-            container={container}
+        {/* <Hidden smUp implementation="css"> */}
+          {/* <Drawer
+            // container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
+            // classes={{
+              // paper: classes.drawerPaper,
+            // }}
             ModalProps={{
               keepMounted: true, // Better open performance on mobile.
             }}
           >
             {drawer}
-          </Drawer>
-        </Hidden>
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
+          </Drawer> */}
+        {/* </Hidden> */}
+        {/* <Hidden xsDown implementation="css"> */}
+          {/* <Drawer
+            // classes={{
+            //   paper: classes.drawerPaper,
+            // }}
             variant="permanent"
             open
-          >
+          > */}
             {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
+          {/* </Drawer> */}
+        {/* </Hidden> */}
+      {/* </nav> */}
      
     </div>
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+// ResponsiveDrawer.propTypes = {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window: PropTypes.func,
+// };
 
 
 

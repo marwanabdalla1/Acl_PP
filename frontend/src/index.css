@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* base styles */
-
+* {
+  margin: 0;
+  font-family: "Quicksand";
+  color: #333;
+}
 body {
   margin: 0;
   padding: 0;
@@ -11,12 +17,10 @@ body {
   width: 100%;
   height: 100vh;
 }
-
-* {
-  margin: 0;
-  font-family: "Quicksand";
-  color: #333;
+.App{
+  height: inherit;
 }
+
 .Navbar {
   padding: 20px;
   display: flex;
@@ -67,9 +71,31 @@ body {
   font-size: 1.2rem;
 }
 
+
+
+/* The Main page */
+
+.mainpage{
+  display: 'flex';
+   height: '100%' ;
+}
+
+
+.responsive-drawer{
+  flex: '0 0 15%' ;
+}
+.allcourses-page{
+  /* flex: 1; */
+  margin-left: 250px;
+}
+
+
+
+
 .content {
   max-width: 1200px;
-  margin: 40px auto;
+  /* margin: 40px auto; */
+  margin: 0 0;
   padding: 20px;
 }
 /* blog previews / list */
@@ -256,4 +282,98 @@ input {
 
 .save-button:hover {
   background-color: #005ae6;
+}
+
+
+.gg-trash {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  transform: scale(var(--ggs,1));
+  width: 10px;
+  height: 12px;
+  border: 2px solid transparent;
+  box-shadow:
+      0 0 0 2px,
+      inset -2px 0 0,
+      inset 2px 0 0;
+  border-bottom-left-radius: 1px;
+  border-bottom-right-radius: 1px;
+  margin-top: 4px
+}
+
+
+
+.subtitle-item {
+  border-bottom: 1px solid #ccc;
+  /* padding: px; */
+}
+
+.subtitle-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle-name {
+  margin: 0;
+}
+
+.delete-subtitle-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.trash-icon {
+  font-size: 18px;
+  color: red;
+}
+
+.subtitle-items-container {
+  margin-left: 20px;
+}
+
+.exercise-name,
+.video-name {
+  margin: 0;
+}
+
+.drawer-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+
+
+
+/* For the Course View Page */
+
+.split {
+  display: flex;
+  margin-right:200px;
+}
+
+.split > * {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  margin: 0;
+  margin-right: 100px;
+  padding-right: 50px;
+}
+
+
+.subtitledrawer{
+margin: 0;
+padding: 0;
+}
+.ExVidview{
+margin-left: 240px;
 }

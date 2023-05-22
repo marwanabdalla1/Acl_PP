@@ -3,10 +3,7 @@ const Exercise = require('../model/exerciseSchema')
 const Course = require('../model/courseSchema')
 const Question = require('../model/questionSchema')
 var fos = require('filter-objects');
-// const { inspect } = require('util');
 
-
-// const createQuery = require('filter-query').createQuery;
 
 
 const instructorController = {
@@ -37,28 +34,37 @@ const instructorController = {
 
 
 
-  createSubtitle: async (req, res) => {
-    console.log(req.body.subtitle)
-    const videos = req.body.subtitle.video;
-    const subtitle = new Subtitle({
-      name: req.body.subtitle.name,
-      video: videos.map(video => video.video.trim()),
-      totalhours: req.body.subtitle.totalhours,
-      courseid: req.body.subtitle.courseid,
-      // exercises: req.body.subtitle.exercises.map(id => mongoose.Types.ObjectId(id)),
-      // courseid: req.body.subtitle.courseid.map(id => mongoose.Types.ObjectId(id))
-    });
-      
-      try {
-        const result = await subtitle.save();
-        res.json(result);
-        console.log(subtitle)
-      } catch (error) {
-        res.status(500).json({ error: error.message });
+    createSubtitle: async (req, res) => {
+      const videos = req.body.subtitle.video;
+    var regExp = /^.*(youtu.be\/|v\/|e\/|u\/\w+\/|embed\/|v=)([^#\&\?]*).*/;
+ 
+    const mappedVideos = videos.map((item) => {
+      const { url, vidname } = item;
+     // console.log(video)
+      var match = url.match(regExp)
+      if (match && match[2].length == 11) {
+        item.url = match[2];
       }
-    }, 
-
-
+      return { vidname, url: match[2] };
+    });
+    console.log(mappedVideos)
+      const subtitle = new Subtitle({
+        name: req.body.subtitle.name,
+        video:mappedVideos,
+        totalhours: req.body.subtitle.totalhours,
+        courseid: req.body.subtitle.courseid,
+        
+      });
+        
+        try {
+          const result = await subtitle.save();
+          res.json(result);
+          console.log(subtitle)
+        } catch (error) {
+          res.status(500).json({ error: error.message });
+        }
+      }, 
+    
 
     createExercise: async (req, res) => {
       const exercise = new Exercise ({
@@ -290,14 +296,7 @@ const instructorController = {
       }
 
       
-        // const results = await Course.findById(filters).populate({
-        //     path: 'subtitle',
-        //     select: 'name video totalhours exercises',
-        //     populate: {
-        //         path: 'exercises',
-        //         model: 'Exercise'
-        //       } 
-        //   })
+       
         const results = await Course.findById(filters)
         .populate({
           path: 'subtitle',

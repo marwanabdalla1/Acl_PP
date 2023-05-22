@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className="Navbar">
-      <h1>Coursera el ghalaba</h1>
+      <h1 className="text-3xl font-bold underline">Coursera el ghalaba</h1>
 
 
 
@@ -28,7 +28,8 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faSearch} />
         </Link>
         
-        <Link to={`/createcourse`}>
+        <Link className="font-bold underline"
+        to={`/createcourse`}>
           <button> Create Course</button>
         </Link>
       </div>

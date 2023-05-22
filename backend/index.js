@@ -5,11 +5,10 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const Joi = require('joi')
 
-
+const userView = require('./routes/userView')
 const courses = require('./routes/coursesView')
-const exercise = require('./routes/instructorView')
+const instructorView = require('./routes/instructorView')
 const express = require('express')
-
 
 
 
@@ -21,10 +20,15 @@ const {
 const app = express()
 app.use(express.json());
 
+if (!config.get('jwtPrivateKey')) {
+  console.error('FATAL ERROR: jwtPrivateKey is not defined')
+  process.exit(1)
+}
+
 require('dotenv').config();
 
 const mongoose = require('mongoose')
-const connectDB = require('./model/dbconnect')
+const connectDB = require('./dbconnect')
 
 //in the index, we are going to use the the app routes, we will also add the conncection string, and the express app
 // bas 3ady momken ne3mel class tanya feha conncection string
@@ -40,8 +44,7 @@ const Subtitle = require('./model/subtitleSchema')
 //Connect to the DB 
 connectDB();
 
-//getCourses()
-// filterCourse()
+
 
 
 app.use((req, res, next) => {
@@ -50,15 +53,21 @@ app.use((req, res, next) => {
     // Set the allowed HTTP methods to be used on the API
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
     // Set the allowed headers to be used on the API
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-auth-token');
+
+  //I don't think this should be like this
+    // res.setHeader('Access-Control-Allow-Headers', '*');
     // Pass control to the next middleware
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Expose-Headers', 'x-auth-token');
+
     next();
   });
   
 
-
-app.use('/api/createcourse', courses)
-app.use('/api/instructor', exercise)
+app.use('/api/user', userView)
+//app.use('/api/createcourse', courses)
+app.use('/api/instructor', instructorView)
 
 
 const port = process.env.PORT || 3500

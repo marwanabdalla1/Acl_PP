@@ -1,10 +1,16 @@
 import { Grid } from '@mui/material';
 import MediaCard from '../Components/CardPreview';
-import Navbar from '../Components/Navbar';
 import useFetch from '../functions/useFetch';
 
 function CourseGrid() {
+
+  //all of the objects retrieved from useFetch are optional
   const { data: courses, isPending, error } = useFetch('http://www.localhost:3500/api/instructor/getCourses');
+  
+  const usertoken =localStorage.getItem('token')
+
+  console.log(usertoken)
+
 
   if (isPending) {
     return <div>Loading...</div>;

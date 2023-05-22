@@ -1,0 +1,85 @@
+import React from 'react'
+import { useForm } from "react-hook-form";
+import {useHistory} from 'react-router-dom'
+import {  useState, useEffect } from 'react';
+import axios from 'axios';
+
+const LoginPage = () => {
+    
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [loginData, setLoginData] = useState({})
+  const [invalid, setInvalid] = useState(false)
+  const history = useHistory();
+
+
+
+
+  const onSubmit = async (data) => {
+    await setLoginData(data)
+  } 
+
+
+  useEffect(()=> {
+    if(loginData.email) {
+      console.log(loginData)
+     
+      axios.post('http://localhost:3500/api/user/auth', { loginData })
+          .then(response => {
+            // Access the response headers
+            const headers = response.headers;
+            // Access specific header values
+            const xAuthToken = headers['x-auth-token'];
+            console.log(xAuthToken)
+            localStorage.setItem('token', xAuthToken);
+
+
+            history.push({pathname:'/home'})
+          })
+          .catch(error => {
+            // Handle error
+            console.log(error.response.data)
+            if (error.response.data==='Invalid email or password.') setInvalid(prevstate=> !prevstate)
+            console.log(invalid)
+            //console.error('Error:', error);
+          });
+
+
+
+
+    }
+  }, [loginData])
+     
+
+ 
+
+
+    return ( 
+      <div className="loginpage h-2/3 flex flex-col pb-10" 
+      style={{ backgroundImage: 'url(../images/loginbackground.jpeg)' }}>
+
+
+    <form class=" flex  w-96  m-auto flex-col h-min "
+      onSubmit={handleSubmit(onSubmit)}
+    >
+    { invalid &&  <h2 class=" text-rose-600">Invalid email or password.</h2>}
+      <label class=" text-neutral-100" htmlFor='email'> Email</label>
+      <input id="email"  type='email'{...register("email", { required: true })} />
+      <label class=" text-neutral-100" htmlFor='password'> Password</label>
+      <input id="password" type='password' {...register("password", { required: true })} />
+     
+      <button class="text-neutral-50" type='submit'> Login</button>
+    </form>
+    <div class="mx-96">
+    <button  class=" ml-52  text-neutral-950 bg-gray-400 rounded" > Sign up</button>
+    </div>
+
+
+    <center >
+    <button  class="   text-neutral-950 bg-gray-400 rounded" > Sign up</button>
+    </center>
+
+    </div>
+ );
+}
+ 
+export default LoginPage;

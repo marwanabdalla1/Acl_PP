@@ -1,4 +1,6 @@
 import './index.css';
+import 'tailwindcss/tailwind.css';
+
 import Navbar from './Components/Navbar'
 // import Home from '../../backend/Home'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -20,31 +22,37 @@ import SubtitlesForm from './Components/subtitlesForm'
 import fetchComp from './Components/useEffect'
 import CourseForm from './Components/CourseForm';
 import Drawer2 from './Components/Drawer2'
-
 import CVP from './Pages/CourseViewPage'
-//check for the npm youtube player and look for a demo
+import LoginPage from './Pages/loginPage';
+
 
 function App() {
- // const title = 'Welcome to the blog'
   const link = "www.google.com"
    
   return (
     <Router>
       <div className="App">
+        {/* <h1>hello</h1> */}
       <Navbar/>
       {/* <Profile/>
       <Login></Login>
       <ChangeColor/> */}
-        <div className="content">
+        <div class="content max-w-7xl  mx-0  px-5 py-5 h-full ">
         <Switch>
+
         <Route exact path="/">
-          <div style={{ display: 'flex', height: '100%' }}>
-            <div style={{ flex: '0 0 15%' }}>
-              <ResponsiveDrawer />
-            </div>
-            <div style={{ flex: '1' }}>
-              <HomePage />
-            </div>
+          <LoginPage/>
+        </Route>
+
+        <Route exact path="/home">
+          <div className="homepage  flex">
+              <div  className="  w-1/4 flex-1 ">
+                <ResponsiveDrawer />
+              </div>
+              <div  className=" w-3/4">
+                <HomePage /> 
+                {/* <loginPage/> */}
+              </div>
           </div>
         </Route>
 
@@ -59,14 +67,18 @@ function App() {
           <Route path = "/create">
             <Create/>
           </Route>
+
+
           <Route path = "/courses/:id">
-            <div>
             <CVP/>
-            </div>
           </Route>
+
+
           <Route path = "/searchcourse/:id">
             <CourseSearch/>
           </Route>
+
+
           <Route path = "/Filtercourse/:id">
             <CourseFilter/>
           </Route>

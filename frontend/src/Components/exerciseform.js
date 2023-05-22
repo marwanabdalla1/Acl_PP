@@ -84,58 +84,6 @@ const onSubmitExercise = (data) => {
 
 
 
-// const onSubmit = (data, event) => {
-//   event.preventDefault();
-//   setIsQuestionCreated(false)
-//   if (action==="question") {
-//     const { question, optionA, optionB, optionC, optionD, answer } = data;
-//     console.log(data.action)  
-//     // console.log('The action is', actionRef.current.value);
-//     const choices = [optionA, optionB, optionC, optionD];
-//     const newQuestion = { question, choices, answer };
-//     setQuestion(newQuestion)
-//     console.log('The data is'+ newQuestion)
-//     console.log('The question is' + question)
-//     console.log(action)
-//   }
-//   else if (action === "exercise") {
-//     const { question, optionA, optionB, optionC, optionD, answer } = data;
-//     console.log(data.action)  
-//     // console.log('The action is', actionRef.current.value);
-//     const choices = [optionA, optionB, optionC, optionD];
-//     const newQuestion = { question, choices, answer };
-//     setQuestion(newQuestion)
-//     console.log('The data is'+ newQuestion)
-//     console.log('The question is' + question)
-//     console.log(action) 
-//     // setShowSubtitleForm(false)
-//     // setShowExerciseForm(true)
-    
-//     window.location.reload(); // refresh the component
-
-  
-//   } 
-//   else if (action === "subtitle") {
-//     const { question, optionA, optionB, optionC, optionD, answer } = data;
-//     console.log(data.action)  
-//     // console.log('The action is', actionRef.current.value);
-//     const choices = [optionA, optionB, optionC, optionD];
-//     const newQuestion = { question, choices, answer };
-//     setQuestion(newQuestion)
-//     console.log('The data is'+ newQuestion)
-//     console.log('The question is' + question)
-//     console.log(action) 
-//     // setShowSubtitleForm(false)
-//     // setShowExerciseForm(true)
-//     if (isQuestionCreated) {
-//       history.push({
-//         pathname: '/subtitleform',
-//         state: {
-//           CourseIdz: Courseid
-//         }
-//       });
-//     } }
-// }
 const onSubmit = (data, event) => {
   event.preventDefault();
   // setIsQuestionCreated(false)

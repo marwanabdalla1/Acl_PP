@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const { migrate, createCourses,createExercise, createSubtitle, createQuestion, filterCourse, getCourses, getCourse, searchCourse, updatecourse, updatesubtitle, updateexercise}
+const { migrate, createCourses,createExercise, createSubtitle,
+     createQuestion, filterCourse, getCourses, getCourse, searchCourse,
+      updatecourse, updatesubtitle, updateexercise}
  = require('../controller/instructorController')
 
 

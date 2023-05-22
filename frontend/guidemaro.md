@@ -33,3 +33,12 @@ in that subtitle component it will have access to functions passed from the all 
 
 In the sidebar, i don't care about the array of subtitles if the click more is clicked or not so i don't have to pass that to the course page
 I will make a state in for each item component that is local to that item only
+
+
+
+DONE !!! bravo 
+
+
+
+
+I could make nested routes going forward
