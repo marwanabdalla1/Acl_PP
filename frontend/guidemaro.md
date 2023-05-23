@@ -42,3 +42,16 @@ DONE !!! bravo
 
 
 I could make nested routes going forward
+
+
+
+
+
+After initally logging in we can use some inspiration from the get user
+
+a function that will return the role
+
+
+We will make a usestate with the role saved in local storage or something 
+
+and conditionally render components based that state
