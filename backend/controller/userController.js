@@ -40,6 +40,7 @@ const userController = {
     },
     authUser: async (req, res) => {
 
+      console.log(req.user)
       if (req.body.loginData)    req.body = req.body.loginData
 
       console.log(req.body)
@@ -79,10 +80,11 @@ const userController = {
           }
     },
     getUser: async (req, res)=> {
-        console.log(req.user._id)
+        console.log(req.user)
         const user = await User.findById(req.user.id).select('-password')
-        res.send(user)
-        console.log(user)
+       // res.send(user)
+       res.send(req.user)
+        //console.log(user)
     }
 
 }
