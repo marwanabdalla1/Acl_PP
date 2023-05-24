@@ -7,21 +7,28 @@ const config = require('config')
   
 const userController = {
     registerUser: async (req, res) => {
+
+
+      if (req.body.objtoSubmit)    req.body = req.body.objtoSubmit
+
+
         //first check if the data coming is valid
-        let {error} = validate(req.body)
-        if (error ) return res.status(400).send(error.details[0].message)
+       let {error} = validate(req.body)
+       if (error ) return res.status(400).send(error.details[0].message)
+
 
         //check if the password is valid
        let {error: passError} = validatePass(req.body.password)
         if (passError ) return res.status(400).send(passError.details[0].message)
 
+
         //check if the email already exists in the database
         let user = await User.findOne({email: req.body.email})
         if (user) return res.status(400).send('User already registered')
 
+
         //create the new user, use the lodash package to avoid duplication ex: user.firstname etc...
-        
-        user = new User(_.pick(req.body, ['firstName','lastName', 'email', 'password','isAdmin']))
+        user = new User(_.pick(req.body, ['firstName','lastName', 'email', 'password','role']))
         //salt and hash the password
         const salt = await bcrypt.genSalt(10)
         user.password = await bcrypt.hash(user.password, salt)
@@ -32,7 +39,7 @@ const userController = {
         const token = user.generateAuthToken()
 
 
-        res.header('x-auth-token', token).send(_.pick(user, ['_id', 'firstName', 'email', 'password','isAdmin']))
+        res.header('x-auth-token', token).send(_.pick(user, ['_id', 'firstName', 'email', 'password','role']))
 
         
 

@@ -31,11 +31,16 @@ const jwt = require('jsonwebtoken')
         minlength: 5,
         maxlength: 1024
     },
-    isAdmin: Boolean
+    role: {
+        type: String,
+        required: true,
+    
+    }
+    
 })
 
 userSchema.methods.generateAuthToken = function (){
-    const token = jwt.sign({id: this._id, isAdmin: this.isAdmin}, config.get('jwtPrivateKey'))
+    const token = jwt.sign({id: this._id, role: this.role}, config.get('jwtPrivateKey'))
     return token
 }
 
@@ -48,7 +53,7 @@ async function validateUser(user) {
       lastName: Joi.string().min(5).max(50).required(),
       email: Joi.string().min(5).max(255).required().email(),
       password: Joi.string().min(5).max(1024).required(),
-      isAdmin: Joi.boolean()
+      role: Joi.string().required()
     });
     
     return schema.validateAsync(user);

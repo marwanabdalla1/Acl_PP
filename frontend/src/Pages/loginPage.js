@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import {  useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -62,20 +62,19 @@ const LoginPage = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
     { invalid &&  <h2 class=" text-rose-600">Invalid email or password.</h2>}
-      <label class=" text-neutral-100" htmlFor='email'> Email</label>
+      <label class=" text-black" htmlFor='email'> Email</label>
       <input id="email"  type='email'{...register("email", { required: true })} />
-      <label class=" text-neutral-100" htmlFor='password'> Password</label>
+      <label class=" text-black" htmlFor='password'> Password</label>
       <input id="password" type='password' {...register("password", { required: true })} />
      
-      <button class="text-neutral-50" type='submit'> Login</button>
+      <button class=" text-black" type='submit'> Login</button>
     </form>
-    <div class="mx-96">
-    <button  class=" ml-52  text-neutral-950 bg-gray-400 rounded" > Sign up</button>
-    </div>
+
 
 
     <center >
-    <button  class="   text-neutral-950 bg-gray-400 rounded" > Sign up</button>
+  < Link to ="/signup"> <button  class="   text-white bg-indigo-600 rounded"
+   > Create a new Account</button> </Link>
     </center>
 
     </div>

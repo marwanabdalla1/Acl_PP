@@ -12,13 +12,13 @@ const jwt = require('jsonwebtoken')
 
 module.exports = function(req, res, next){
     const token = req.header('x-auth-token')
-   // console.log(token)
+ //  console.log(token)
     if (!token) return res.status(401).send('Access denied. No token provided')
    
     
     try {
        const decoded = jwt.verify(token, config.get('jwtPrivateKey'))
-      // console.log(decoded)
+    //  console.log(decoded)
        req.user = decoded //This line will set the req.user data to the id of the user
        next()
     }

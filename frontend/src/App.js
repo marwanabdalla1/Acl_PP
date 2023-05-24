@@ -24,7 +24,7 @@ import CourseForm from './Components/CourseForm';
 import Drawer2 from './Components/Drawer2'
 import CVP from './Pages/CourseViewPage'
 import LoginPage from './Pages/loginPage';
-
+import SignUp from './Components/signUp';
 
 function App() {
   const link = "www.google.com"
@@ -32,12 +32,10 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {/* <h1>hello</h1> */}
+
+
       <Navbar/>
-      {/* <Profile/>
-      <Login></Login>
-      <ChangeColor/> */}
-        <div class="content max-w-7xl  mx-0  px-5 py-5 h-full ">
+     
         <Switch>
 
         <Route exact path="/">
@@ -45,17 +43,22 @@ function App() {
         </Route>
 
         <Route exact path="/home">
-          <div className="homepage  flex">
-              <div  className="  w-1/4 flex-1 ">
+        <div class="content w-full  mx-0  px-5 py-5 h-full ">
+              <div  className="  w-1/4 flex-1 inline-block ">
                 <ResponsiveDrawer />
               </div>
-              <div  className=" w-3/4">
+              <div  className=" w-3/4 inline-block  pl-4 border-l-red-400
+              ">
                 <HomePage /> 
                 {/* <loginPage/> */}
               </div>
           </div>
         </Route>
 
+
+        <Route path="/signup">
+            <SignUp/>
+            </Route>
 
           <Route path="/createcourse">
             <CourseForm/>
@@ -91,7 +94,7 @@ function App() {
 
         </Switch>
       </div>
-    </div>
+  
     </Router>
     
   );
