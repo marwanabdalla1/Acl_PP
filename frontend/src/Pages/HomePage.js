@@ -1,13 +1,16 @@
 import { Grid } from '@mui/material';
-import CourseCard from '../Components/CardPreview';
+import CourseCard from '../Components/CourseCard';
 import useFetch from '../functions/useFetch';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import FilterDrawer from '../Components/drawer'
 
-
+import { useDisclosure } from '@mantine/hooks';
+import { Drawer, Button, Group } from '@mantine/core';
 function CourseGrid() {
+  const [opened, { open, close }] = useDisclosure(false); //for the drawer
 
   //all of the objects retrieved from useFetch are optional
   const [corptr, setCorptr] = useState(false)
@@ -59,18 +62,28 @@ function CourseGrid() {
 
 
   return (
-    <div style={{ width: '100%' }}>
+    <div class=" flex">
+
+
+         <Drawer opened={opened} onClose={close} title="Drawer Title">
+            <FilterDrawer class="filterdrawer"/>
+
+          </Drawer>
+
+          <Button class=' text-red-600 font-bold' onClick={open}>Filter Courses</Button>
 
     <div className='coursesdiv'>
-    <Grid container spacing={2}>
-      {courses.map((course) => (
-        <Grid item key={course.id} xs={12} sm={6} md={4}>
-          <CourseCard course={course} />
+        <Grid container spacing={2}>
+          {courses.map((course) => (
+
+              <Grid item key={course.id} xs={12} sm={6} md={4}>
+                <CourseCard course={course} />
+              </Grid>
+
+          ))}
         </Grid>
-      ))}
-    </Grid>
-    </div>
      
+    </div>
     </div>
    
   );

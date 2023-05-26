@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function subtitle(props){
+export default function CourseToc(props){
 
 //This subtitle component will act as a function to access all data related to the component and display it 
 //

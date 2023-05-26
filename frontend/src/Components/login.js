@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { login } from '../features/user'
-import { logout } from '../features/user'
+import { login } from '../Reducers/userReducer'
+import { logout } from '../Reducers/userReducer'
 
 
 function Login() {

@@ -35,7 +35,11 @@ const jwt = require('jsonwebtoken')
         type: String,
         required: true,
     
-    }
+    },
+    courses: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course'
+    }]
     
 })
 

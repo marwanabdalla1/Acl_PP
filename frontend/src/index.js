@@ -6,12 +6,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {configureStore} from '@reduxjs/toolkit'
 import {Provider} from 'react-redux'
-import userReducer from './features/user'
-import themeReducer from './features/theme'
-import CourseReducer from './features/coors'
+import userReducer from './Reducers/userReducer'
+import themeReducer from './Reducers/theme'
+import CourseReducer from './Reducers/coors'
 import { MantineProvider } from '@mantine/core';
 
 
+
+//store for redux
 const store = configureStore({
   reducer: {
     user: userReducer,
@@ -21,14 +23,13 @@ const store = configureStore({
 })
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 root.render(
   //  <React.StrictMode>
-  // <MantineProvider withGlobalStyles withNormalizeCSS>
-
     <Provider store = {store}>
       <App />
     </Provider>
-    // </MantineProvider>
 
 );
     {/* </React.StrictMode>  */}

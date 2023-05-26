@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import MediaCard from '../Components/CardPreview';
+import MediaCard from '../Components/CourseCard';
 import useFetch from '../functions/useFetch';
 import { useHistory, useParams } from "react-router-dom";
 

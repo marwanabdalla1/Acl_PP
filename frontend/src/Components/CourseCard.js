@@ -35,8 +35,8 @@ const [courseinfo, setCourseinfto] = useState('')
       },[])
 
 
-  return (
-    <Card key={course.id} sx={{ maxWidth: 345 }}>
+      return (
+      <Card key={course.id} sx={{ maxWidth: 345 }}>
       <CardMedia sx={{ height: 140 }} image={myImage} title={course.title} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -44,6 +44,12 @@ const [courseinfo, setCourseinfto] = useState('')
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {course.subject}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+         Rating: {course.rating} 
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+         Price: ${course.price} 
         </Typography>
       </CardContent>
       <CardActions>

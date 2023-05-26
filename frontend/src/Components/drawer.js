@@ -6,7 +6,7 @@ import PricesSlider from './minicomponents/priceslider'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import {postmaxprice, postminprice, postmaxrating, postminrating} from '../features/coors'
+import {postmaxprice, postminprice, postmaxrating, postminrating} from '../Reducers/coors'
 
 import { Link } from 'react-router-dom';
 
@@ -56,9 +56,7 @@ function ResponsiveDrawer(props) {
 
 
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+ 
 
 
 
@@ -81,7 +79,7 @@ function ResponsiveDrawer(props) {
 
 
   return (
-    <div class="max-w-xs "  >
+    <div  >
       
             {drawer}
         

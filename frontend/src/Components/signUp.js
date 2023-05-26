@@ -19,11 +19,8 @@ import { Button, TextInput } from '@mantine/core';
 //the previous forms, and we were forced to use useEffect
 function SignUp () {
 
-   // const {  handleSubmit, formState: { errors } } = useForm();
-    const [signupData, setSignupData] = useState({})
     const [invalid, setInvalid] = useState(false)
     const history = useHistory();
-    const [submit, setSubmit] = useState(false)
   
 
       const [formData, setFormData] = useState(

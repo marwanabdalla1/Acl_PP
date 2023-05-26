@@ -1,30 +1,14 @@
-import { Grid } from '@mui/material';
-import MediaCard from '../Components/CardPreview';
-import Navbar from '../Components/Navbar';
-import useFetch from '../functions/useFetch';
-import { useHistory, useParams } from "react-router-dom";
-import {Drawer as MUIDRAWER,List,ListItem, ListItemIcon,  ListItemText, makeStyles, ListItemSecondaryAction
-} from "@material-ui/core"
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import ListItemButton from '@mui/material/ListItemButton';
 import React from 'react';
-import axios from 'axios';
-import SubtitleDrawer from '../Components/subtitledrawer';
-import ExerciseView from '../Components/exerciseview';
+import CourseToc from '../Components/CourseToc';
+import ExerciseView from '../Components/SubtComp/exerciseview';
+import VideoView from '../Components/SubtComp/videoView';
 
-import Split from "react-split"
-import VideoView from '../Components/videoView';
+import { useDisclosure } from '@mantine/hooks';
+import { Drawer, Button, Group } from '@mantine/core';
 
 
-
-// const useStyles = makeStyles({
-//     drawer: {
-//         display: 'flex',
-//         flex: '0 0 15%' ,
-//         width: "160px",
-//         zIndex: 1
-//     }
-// })
 
 
 const CVP = () => {
@@ -37,16 +21,17 @@ const CVP = () => {
     // const classes = useStyles
 
 
+    const [opened, { open, close }] = useDisclosure(false); //for the drawer
+
+
     useEffect(() => {
       async function fetchData() {
         const response = await fetch('http://www.localhost:3500/api/instructor/getCourse?id='+id);
         const data = await response.json();
-         console.log(data); // add this line
         const subtitlez = data.subtitle; // update this line
         setSubtitles(subtitlez);
       }
       fetchData();
-      // console.log(subtitles)
     }, []);
 
 
@@ -101,12 +86,10 @@ const CVP = () => {
 
 
     function showVideo(id){
-      console.log(id)
       let vid= {}
 
       for (let i = 0; i < subtitles.length; i++) {
         const vids = subtitles[i].video; // we have many subtitles, this checks the first subtitle element if it has 
-        console.log(vids)
         for (let j = 0; j < vids.length; j++) { //a for loop inside the videos objects of one subtitle
           if (vids[j]._id === id) {
              setVideos(vids[j])
@@ -126,18 +109,29 @@ const CVP = () => {
     return ( 
        <div class="drawer&content flex">
            
-            <SubtitleDrawer
-              className="subtitledrawer" //styling
-              subtitles={subtitles}   //data or props
-              showExercise={showExercise} //functions
-              showVideo={showVideo}  //functions
-            />
+           <Button class=' text-red-600 font-bold' onClick={open}>Open Course Content</Button>
+
+
+               <Drawer opened={opened} onClose={close} title="Drawer Title">
+                      <CourseToc
+                        className="subtitledrawer" //styling
+                        subtitles={subtitles}   //data or props
+                        showExercise={showExercise} //functions
+                        showVideo={showVideo}  //functions
+                      />
+                </Drawer>
+           
           <div className="subcontent ml-28 mt-28">
               {exvisible && <ExerciseView className="exercise-eview" exercises={exercises} />}
               {vidvisible && <VideoView videoId= {videos} />}
           </div>
 
            
+   
+
+
+   
+  
 
       
 

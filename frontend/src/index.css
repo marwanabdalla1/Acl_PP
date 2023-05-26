@@ -37,11 +37,7 @@ body {
 .Navbar .links {
   margin-left: auto;
 }
-.Navbar a {
-  margin-left: 16px;
-  text-decoration: none;
-  padding: 6px;
-}
+/*   */
 .Navbar a:hover {
   color: #4e35f1;
 }
@@ -93,10 +89,10 @@ body {
 
 
 .content {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   /* margin: 40px auto; */
   margin: 0 0;
-  padding: 20px;
+  /* padding: 20px; */
 }
 /* blog previews / list */
 .course-preview {

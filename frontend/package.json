@@ -11,6 +11,7 @@
     "@material-ui/icons": "^4.11.3",
     "@mui/material": "^5.11.15",
     "@reduxjs/toolkit": "^1.9.3",
+    "@tabler/icons-react": "^2.20.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -28,6 +29,7 @@
     "scheduler": "^0.23.0",
     "split": "^1.0.1",
     "superagent": "^8.0.9",
+    "tabler-icons-react": "^1.56.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

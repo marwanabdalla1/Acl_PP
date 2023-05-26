@@ -3,13 +3,10 @@ import { useForm } from "react-hook-form";
 import {useHistory, Link} from 'react-router-dom'
 import {  useState, useEffect } from 'react';
 import axios from 'axios';
-import { useDisclosure } from '@mantine/hooks';
-import { Drawer, Button, Group } from '@mantine/core';
+
+
+
 const LoginPage = () => {
-    
-  const [opened, { open, close }] = useDisclosure(false);
-
-
 
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loginData, setLoginData] = useState({})
@@ -64,14 +61,6 @@ const LoginPage = () => {
       style={{ backgroundImage: 'url(../images/loginbackground.jpeg)' }}>
 
 
-
-                <Drawer opened={opened} onClose={close} title="Drawer Title">
-                  <h2>Hello Drawer</h2>
-
-                  {/* Technically i can add another component here that displays the data */}
-                </Drawer>
-
-
                 <form class=" flex  w-96  m-auto flex-col h-min "
                   onSubmit={handleSubmit(onSubmit)}
                 >
@@ -88,14 +77,13 @@ const LoginPage = () => {
 
                 </form>
 
-        <Button class=' text-red-600 font-bold' onClick={open}>Open Drawer</Button>
 
    
 
-    <center >
-  < Link to ="/signup"> <button  class="   text-white bg-indigo-600 rounded"
-   > Create a new Account</button> </Link>
-    </center>
+                <center >
+                  < Link to ="/signup"> <button  class="   text-white bg-indigo-600 rounded"
+                  > Create a new Account</button> </Link>
+                </center>
 
     </div>
  );
