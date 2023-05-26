@@ -124,27 +124,20 @@ const CVP = () => {
     
 
     return ( 
-       <div>
-        <p> Hello There!</p>
-
-            <Split
-                sizes={[2, 98]}
-                direction="horizontal"
-                className="split"
-          >
+       <div class="drawer&content flex">
+           
             <SubtitleDrawer
-              className="subtitledrawer"
-              subtitles={subtitles}
-              showExercise={showExercise}
-              showVideo={showVideo}
+              className="subtitledrawer" //styling
+              subtitles={subtitles}   //data or props
+              showExercise={showExercise} //functions
+              showVideo={showVideo}  //functions
             />
-          <div className="ExVidview">
+          <div className="subcontent ml-28 mt-28">
               {exvisible && <ExerciseView className="exercise-eview" exercises={exercises} />}
               {vidvisible && <VideoView videoId= {videos} />}
           </div>
 
            
-        </Split> 
 
       
 

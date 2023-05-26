@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@emotion/react": "^11.11.0",
+    "@mantine/core": "^6.0.11",
+    "@mantine/hooks": "^6.0.11",
     "bcrypt": "^5.1.0",
     "config": "^3.3.9",
     "doge": "^19.9.9-much.party",

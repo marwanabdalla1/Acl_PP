@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import {useHistory, Link} from 'react-router-dom'
 import {  useState, useEffect } from 'react';
 import axios from 'axios';
+import { Button, TextInput } from '@mantine/core';
 
 
 //Some functionality to add later, make it so that you can only make a high role if you have a specific key. That key can be obtained from the company or whatever
@@ -23,19 +24,14 @@ function SignUp () {
     const [invalid, setInvalid] = useState(false)
     const history = useHistory();
     const [submit, setSubmit] = useState(false)
-    const onSubmit = async (data) => {
-        await setSignupData(data)
-      } 
+  
 
       const [formData, setFormData] = useState(
         {firstName: "", lastName: "", email: "", password: "",  passwordConfirm: "",
         role: ""}
       )
-      const [conpass, setConpass] = useState({c_password: ""})
     
-    function handleC(event) {
-
-    }
+  
       function handleChange(event){
         const {name, value, type, checked} = event.target //this is optional we use when we're dealing with checkboxes
         setFormData(prevFormData=> {
@@ -47,35 +43,7 @@ function SignUp () {
         })
       }
     
-      // useEffect(()=> {
-      //   if(signupData.email) {
-      //     console.log(signupData)
-         
-        //   axios.post('http://localhost:3500/api/user/auth', { signupData })
-        //       .then(response => {
-        //         // Access the response headers
-        //         const headers = response.headers;
-        //         // Access specific header values
-        //         const xAuthToken = headers['x-auth-token'];
-        //         console.log(xAuthToken)
-        //         localStorage.setItem('token', xAuthToken);
-    
-    
-        //         history.push({pathname:'/home'})
-        //       })
-        //       .catch(error => {
-        //         // Handle error
-        //         console.log(error.response.data)
-        //         if (error.response.data==='Invalid email or password.') setInvalid(prevstate=> !prevstate)
-        //         console.log(invalid)
-        //         //console.error('Error:', error);
-        //       });
-    
-    
-    
-    
-      //   }
-      // }, [signupData])
+
 
       function handleSubmit(event) {
         event.preventDefault()
@@ -115,6 +83,9 @@ function SignUp () {
         }
         
       }
+
+
+
 
     return (
     <div className="loginpage h-2/3 flex flex-col pb-10" 
@@ -196,6 +167,8 @@ function SignUp () {
                 <option value="instructor">Instructor</option>
         </select>
         <button class=" text-black" type='submit'> Sign up</button>
+
+        <Button >Abort</Button>
         </form>
        
 

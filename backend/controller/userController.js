@@ -75,7 +75,8 @@ const userController = {
         // the JWT is kinda like your passport, you will need it to acess apis
         const token = user.generateAuthToken()
         //res.send(token)
-        res.header('x-auth-token', token).send(_.pick(user, [ 'firstName', 'lastName']))
+        res.header('x-auth-token', token).send(_.pick(user,  ['_id', 'firstName', 'email', 'password','role']))
+
 
          function validateAuth(user) {
             const schema = Joi.object({

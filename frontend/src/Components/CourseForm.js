@@ -94,7 +94,7 @@ const CourseForm = () => {
       {errors.price && <span className="error">This field is required</span>}
 
       <div className="button-container">
-        <input className="submit-button" type="submit" value="Save and Add Another Exercise" />
+        <input className="submit-button" type="submit" value="Save and Add Exercise" />
         {/* <button className="save-button" onClick={handleSaveAndContinue}>Save and Continue</button> */}
       </div>
     </form>

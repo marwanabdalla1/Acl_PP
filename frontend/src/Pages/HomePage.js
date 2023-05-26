@@ -1,8 +1,12 @@
 import { Grid } from '@mui/material';
-import MediaCard from '../Components/CardPreview';
+import CourseCard from '../Components/CardPreview';
 import useFetch from '../functions/useFetch';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+
 function CourseGrid() {
 
   //all of the objects retrieved from useFetch are optional
@@ -38,7 +42,10 @@ function CourseGrid() {
 
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return <div> 
+      <Box sx={{ display: 'flex' }}>
+       <CircularProgress />
+      </Box></div>;
   }
 
   // render an error message if there was an error fetching the data
@@ -58,7 +65,7 @@ function CourseGrid() {
     <Grid container spacing={2}>
       {courses.map((course) => (
         <Grid item key={course.id} xs={12} sm={6} md={4}>
-          <MediaCard course={course} />
+          <CourseCard course={course} />
         </Grid>
       ))}
     </Grid>

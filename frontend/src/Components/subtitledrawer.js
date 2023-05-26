@@ -9,7 +9,7 @@ export default function subtitle(props){
 
 const subtitleElements = props.subtitles.map((subtitle) => (
     <div key={subtitle._id} className="subtitle-item">
-      <div className="subtitle-header">
+      <div class=" font-bold">
         <h4 className="subtitle-name">{subtitle.name}</h4>
       </div>
   

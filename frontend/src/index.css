@@ -361,7 +361,7 @@ input {
 }
 
 .split > * {
-  flex-grow: 1;
+   /* flex-grow: 1; */
   flex-shrink: 1;
   flex-basis: 0;
   margin: 0;
@@ -376,4 +376,14 @@ padding: 0;
 }
 .ExVidview{
 margin-left: 240px;
+}
+
+.btn.btn-primary {
+ /* // background-color: red; */
+  color: black;
+}
+.btn-success {
+  background-color: red;
+  color: white;
+  font-size: 18px;
 }

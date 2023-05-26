@@ -25,7 +25,7 @@ import Drawer2 from './Components/Drawer2'
 import CVP from './Pages/CourseViewPage'
 import LoginPage from './Pages/loginPage';
 import SignUp from './Components/signUp';
-
+import MantineDrawer from './Components/MantineDrawer';
 function App() {
   const link = "www.google.com"
    
@@ -34,7 +34,6 @@ function App() {
       <div className="App">
 
 
-      <Navbar/>
      
         <Switch>
 
@@ -44,13 +43,14 @@ function App() {
 
         <Route exact path="/home">
         <div class="content w-full  mx-0  px-5 py-5 h-full ">
+        <Navbar/>
+
               <div  className="  w-1/4 flex-1 inline-block ">
                 <ResponsiveDrawer />
               </div>
               <div  className=" w-3/4 inline-block  pl-4 border-l-red-400
               ">
                 <HomePage /> 
-                {/* <loginPage/> */}
               </div>
           </div>
         </Route>

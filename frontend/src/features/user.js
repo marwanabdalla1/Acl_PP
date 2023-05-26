@@ -2,6 +2,8 @@ import {createSlice} from "@reduxjs/toolkit"
 
 
 const initialStateValue = {name: " ", age: 0, email: " "}
+
+//These are the reducers that the user can do, check the login component
 export const userSlice = createSlice({
     name: "user",
     initialState: {value: initialStateValue},
