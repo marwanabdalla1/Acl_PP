@@ -34,9 +34,7 @@ body {
 .Navbar h1 {
   color: #4e35f1;
 }
-.Navbar .links {
-  margin-left: auto;
-}
+
 /*   */
 .Navbar a:hover {
   color: #4e35f1;

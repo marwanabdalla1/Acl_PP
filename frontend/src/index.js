@@ -9,7 +9,6 @@ import {Provider} from 'react-redux'
 import userReducer from './Reducers/userReducer'
 import themeReducer from './Reducers/theme'
 import CourseReducer from './Reducers/coors'
-import { MantineProvider } from '@mantine/core';
 
 
 

@@ -6,7 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Menu, Button, Text } from '@mantine/core';
 import { IconSettings, IconSearch, IconPhoto, IconMessageCircle, IconTrash, IconArrowsLeftRight } from '@tabler/icons-react';
-import { Books } from 'tabler-icons-react';
+import { Books} from 'tabler-icons-react';
+import { IconUserCircle } from '@tabler/icons-react';
+
 const Navbar = () => {
 
     const [courseinfo, setCourseinfto] = useState('')
@@ -62,7 +64,9 @@ const Navbar = () => {
 
         <Menu shadow="md" width={200}>
           <Menu.Target>
-            <Button>My Account</Button>
+          <Button class="font-bold"
+            icon={<IconUserCircle size={15}/>}>My Account
+           </Button>
           </Menu.Target>
 
             <Menu.Dropdown>

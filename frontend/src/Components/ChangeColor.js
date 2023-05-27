@@ -12,12 +12,14 @@ function ChangeColor() {
   return (
     <div>
         <input type= "text" value ={color} 
-        onChange = {(e)=> SetColor(e.target.value)}
+           onChange = {(e)=> SetColor(e.target.value)}
         ></input>
+
+        
             <button 
-        onClick={()=> {
-            dispatch(changeColor(color))
-        }}
+              onClick={()=> {
+                  dispatch(changeColor(color))
+              }}
         ></button>
     </div>
   )

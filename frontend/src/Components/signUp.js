@@ -19,7 +19,7 @@ import { Button, TextInput } from '@mantine/core';
 //the previous forms, and we were forced to use useEffect
 function SignUp () {
 
-    const [invalid, setInvalid] = useState(false)
+  const [invalids, setInvalids] = useState(false)
     const history = useHistory();
   
 
@@ -46,7 +46,7 @@ function SignUp () {
         event.preventDefault()
         console.log(formData)
         if(formData.password === formData.passwordConfirm) {
-            if (invalid) setInvalid(false)
+            if (invalids) setInvalids(false)
             console.log("Successfully signed up")
             const objtoSubmit = formData
             delete objtoSubmit.passwordConfirm
@@ -74,7 +74,7 @@ function SignUp () {
     
 
         } else {
-           if (!invalid) setInvalid(true)
+           if (!invalids) setInvalids(true)
             console.log("Passwords do not match")
             return
         }
@@ -138,7 +138,7 @@ function SignUp () {
             onChange={handleChange}         
          />
         <br/>
-      { invalid &&  <h2 class=" text-rose-600">Passwords do not match.</h2>}
+      { invalids &&  <h2 class=" text-rose-600">Passwords do not match.</h2>}
 
             <input 
                     type="password" 

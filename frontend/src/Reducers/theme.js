@@ -2,12 +2,17 @@ import {createSlice} from "@reduxjs/toolkit"
 
 
 const initialStateValue = ""
+
+
+
 export const themeSlice = createSlice({
     name: "theme",
-    initialState: {value: initialStateValue},
+
+    initialState: {value: initialStateValue}, // the initial state value
+
     reducers: {
-        changeColor: (state, action) => {
-            state.value = action.payload
+        changeColor: (state, action) => {  //essentialy the function or the action
+            state.value = action.payload   
         },
         
     },
