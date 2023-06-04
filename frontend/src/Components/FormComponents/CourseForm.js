@@ -25,7 +25,6 @@ const CourseForm = () => {
   const onSubmit = async (data) => {
     await setCourse(data);
     
-    // if i add the post here it submits an empty object
   };
 
 

@@ -8,6 +8,8 @@ import Typography from '@mui/material/Typography';
 import { Link } from "react-router-dom";
 import myImage from '../images/coffee.png'
 import { useEffect, useState } from 'react';
+import { useDispatch,useSelector } from 'react-redux'
+import { addCourse } from '../redux/Slices/Slices/cartCount';
 
 export default function CourseCard({ course }) {
 
@@ -21,6 +23,7 @@ const [courseinfo, setCourseinfto] = useState('')
     const usertoken =localStorage.getItem('token')
     const userole = localStorage.getItem('role')
 
+    const dispatch = useDispatch()
 
     useEffect(()=> {
 
@@ -33,7 +36,6 @@ const [courseinfo, setCourseinfto] = useState('')
       }
   
       },[])
-
 
       return (
       <Card key={course.id} sx={{ maxWidth: 345 }}>
@@ -59,8 +61,10 @@ const [courseinfo, setCourseinfto] = useState('')
         {  (corptr || indtr) && <Link to={`/courses/${course._id}`}>
           <Button size="small">Buy</Button>
         </Link>   }    
+        <Button 
+              onClick={() => dispatch(addCourse(course._id))}
+              >Add to Cart</Button>
       </CardActions>
     </Card>
   );
 }
- 

@@ -6,7 +6,7 @@ import PricesSlider from './minicomponents/priceslider'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import {postmaxprice, postminprice, postmaxrating, postminrating} from '../Reducers/coors'
+import {postmaxprice, postminprice, postmaxrating, postminrating} from '../redux/Slices/Slices/coors'
 
 import { Link } from 'react-router-dom';
 

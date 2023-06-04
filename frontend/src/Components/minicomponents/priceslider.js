@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { useDispatch } from 'react-redux';
 
-import {postmaxprice, postminprice, postmaxrating, postminrating} from '../../Reducers/coors'
+import {postmaxprice, postminprice, postmaxrating, postminrating} from '../../redux/Slices/Slices/coors'
 
 // // should this component access the course rating value?
 

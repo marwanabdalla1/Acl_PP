@@ -6,7 +6,7 @@ import Slider from '@material-ui/core/Slider';
 
 import { useDispatch } from 'react-redux';
 
-import {postmaxrating, postminrating} from '../../Reducers/coors'
+import {postmaxrating, postminrating} from '../../redux/Slices/Slices/coors'
 
 
 // should this component access the course rating value?

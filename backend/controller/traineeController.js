@@ -27,7 +27,7 @@ const instructorController = {
         } catch (eroor) {
             res.status(500).json({error: error.message})
         }
-    },
+    }, 
 
 
 
@@ -113,7 +113,27 @@ const instructorController = {
           })
 
         console.log( inspect(results, { depth : null }) );
+    },
+    getCartCourses: async (req, res) => {
+
+      try {
+      const {ids} = req.query
+
+      if (ids==="") {
+        res.status(401).json({error: 'Cart is empty'})
+      }
+     const CourseIds = ids.split(',').map(id => id.trim())
+      const courses = await Course.find({_id: {$in: CourseIds}})
+
+      res.json(courses)
     }
+
+    catch (error) {
+      console.error(error)
+      res.status(500).json({error: 'Server error'})
+    }
+
+  }
 
   
       

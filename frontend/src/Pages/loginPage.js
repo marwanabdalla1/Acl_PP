@@ -117,7 +117,7 @@ const LoginPage = () => {
 
 
                 <form class=" flex  w-96  m-auto flex-col h-min "
-                  onSubmit={onSubmit}
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                 { invalid &&  <h2 class=" text-rose-600">Invalid email or password.</h2>}
                   <label class=" text-black" htmlFor='email'> Email</label>

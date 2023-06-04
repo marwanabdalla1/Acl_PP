@@ -55,3 +55,17 @@ a function that will return the role
 We will make a usestate with the role saved in local storage or something 
 
 and conditionally render components based that state
+
+
+
+we can use the old way 
+
+if to dispatch something we will have to first read it's value and then dispatch it
+
+like in cart 
+const count = useSelector(state=>state.count)
+dispatch(count+1
+)
+
+
+try to change the count later

@@ -1,4 +1,5 @@
 import React from "react"
+import { Accordion } from '@mantine/core';
 
 export default function CourseToc(props){
 
@@ -13,22 +14,39 @@ const subtitleElements = props.subtitles.map((subtitle) => (
         <h4 className="subtitle-name">{subtitle.name}</h4>
       </div>
   
+     
       <div className="subtitle-items-container">
-        {subtitle.exercises.map((exercise) => (
-          <div key={exercise._id}>
-            <button className="drawer-button "
-                onClick={()=> props.showExercise(exercise._id)}
-            >{exercise.name}</button>
-          </div>
-        ))}
-        
+      <Accordion defaultValue="Subtitle">
+          <Accordion.Item value="Exercises">
+            <Accordion.Control>Exercises</Accordion.Control>
+            <Accordion.Panel>
+              {subtitle.exercises.map((exercise) => (
+                <div key={exercise._id}>
+                  <button className="drawer-button"
+                    onClick={() => props.showExercise(exercise._id)}
+                  >
+                    {exercise.name}
+                  </button>
+                </div>
+              ))}
+            </Accordion.Panel>
+          </Accordion.Item>
+        <Accordion.Item value="Videos">
+          <Accordion.Control>Videos</Accordion.Control>
+          <Accordion.Panel>
         {subtitle.video.map((video, index) => (
           <div key={index}>
             <button className="drawer-button "
                 onClick={()=> props.showVideo(video._id)}
             >{video.vidname}</button>
+            
           </div>
         ))}
+        </Accordion.Panel>
+        </Accordion.Item>
+
+      </Accordion>
+
       </div>
     </div>
   ));
@@ -40,7 +58,6 @@ const subtitleElements = props.subtitles.map((subtitle) => (
         <section className="pane sidebar">
             <div className="sidebar--header">
                 <h3>Subtitles</h3>
-                {/* <button className="new-note" onClick={props.newNote}>+</button> */}
             </div>
             {subtitleElements}
         </section>

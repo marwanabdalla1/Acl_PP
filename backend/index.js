@@ -4,13 +4,13 @@ const config = require('config')
 const helmet = require('helmet')
 const morgan = require('morgan')
 const Joi = require('joi')
+const express = require('express')
 
 const userView = require('./routes/userView')
 const courses = require('./routes/coursesView')
 const instructorView = require('./routes/instructorView')
-const express = require('express')
-
-
+const payView = require('./routes/payView')
+const traineeView = require('./routes/traineeView')
 
 
 
@@ -64,11 +64,11 @@ app.use((req, res, next) => {
     next();
   });
   
-
+app.use('create-checkout-session', payView)
 app.use('/api/user', userView)
-//app.use('/api/createcourse', courses)
 app.use('/api/instructor', instructorView)
 
+app.use('/api/trainee', traineeView)
 
 const port = process.env.PORT || 3500
 

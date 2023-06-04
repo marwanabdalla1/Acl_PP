@@ -15,12 +15,9 @@ import CourseForm from './Components/FormComponents/CourseForm';
 import CVP from './Pages/CourseViewPage'
 import LoginPage from './Pages/loginPage';
 import SignUp from './Components/signUp';
-
+import Cart from './Pages/CartPage';
 
 //components for testing redux 
-import Profile from './Components/profile';
-import Login from './Components/login';
-import ChangeColor from './Components/ChangeColor';
 
 function App() {
   const link = "www.google.com"
@@ -38,11 +35,11 @@ function App() {
         </Route>
 
         <Route exact path="/home">
-        <div class="content w-full  mx-0  px-5 py-5 h-full ">
+        <div class="content w-full  mx-0  py-5 h-full ">
           
                <Navbar/>
 
-              <div  className=" w-3/4 inline-block  pl-4 border-l-red-400 ">
+              <div  className="  items-center ">
                 <HomePage /> 
               </div>
 
@@ -52,6 +49,16 @@ function App() {
 
         <Route path="/signup">
             <SignUp/>
+            </Route>
+
+
+        <Route path="/checkout">
+        <div class="content w-full  mx-0  py-5 h-full ">
+          <Navbar/>
+
+            <Cart class='pt-10'/>
+            </div>
+
             </Route>
 
           <Route path="/createcourse">

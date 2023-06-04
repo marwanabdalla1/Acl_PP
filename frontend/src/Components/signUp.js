@@ -6,6 +6,12 @@ import axios from 'axios';
 import { Button, TextInput } from '@mantine/core';
 
 
+
+
+//use this whenever you want to route to this page
+
+
+
 //Some functionality to add later, make it so that you can only make a high role if you have a specific key. That key can be obtained from the company or whatever
 
 

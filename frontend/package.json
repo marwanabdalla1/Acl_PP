@@ -26,6 +26,7 @@
     "react-scripts": "5.0.1",
     "react-youtube": "^10.1.0",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "scheduler": "^0.23.0",
     "split": "^1.0.1",
     "superagent": "^8.0.9",

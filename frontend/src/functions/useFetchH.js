@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
-
-//this is the same as the useFetchH but with no headers
-const useFetch = (url) => {
+const useFetch = (url, headers) => {
  // console.log(url)
  
+ headers = headers.header
+ // console.log(headers)
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
@@ -12,7 +12,7 @@ const useFetch = (url) => {
   useEffect(() => {
     const abortCont = new AbortController();
 
-      fetch(url)
+      fetch(url, { headers })
       .then(res => {
         if (!res.ok) { // error coming back from server
           throw Error('could not fetch the data for that resource');
